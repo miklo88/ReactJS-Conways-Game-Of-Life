@@ -8,6 +8,7 @@ class Router extends React.Component {
     return (
       <div>
         <Switch>
+          {/* landing/dashboard/home page */}
           <Route exact path='/' component={Landing} />
           {/* to about page */}
           <Route exact path='/about' component={About} />

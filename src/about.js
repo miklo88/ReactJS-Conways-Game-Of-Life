@@ -7,10 +7,12 @@ class About extends React.Component {
         <h1 className='aboout-title'>About Conways Game of Life</h1>
 
         <p className='about-content'>
-          Rules to Conways Game of Life A) Any live cell with two or three live
-          neighbors survives. B) Any dead cell with three live neighbors becomes
-          a live cell. C) All other live cells die in the next generation.
-          Similarly, all other dead cells stay dead.
+          Rules to Conways Game of Life 1. Any live cell with fewer than two
+          live neighbors dies, as if caused by under-population. 2. Any live
+          cell with two or three live neighbors lives on to the next generation.
+          3. Any live cell with more than three live neighbors dies, as if by
+          over-population. 4. Any dead cell with exactly three live neighbors
+          becomes a live cell, as if by reproduction.
         </p>
 
         <p className='about-content'>
