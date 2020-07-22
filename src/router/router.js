@@ -3,13 +3,16 @@ import { Switch, Route } from "react-router-dom";
 
 import About from "../about";
 
-export default function Router() {
-  return (
-    <div>
-      <Switch>
-        {/* to about page */}
-        <Route exact path='/about' component={About} />
-      </Switch>
-    </div>
-  );
+class Router extends React.Component {
+  render() {
+    return (
+      <div>
+        <Switch>
+          {/* to about page */}
+          <Route exact path='/about' component={About} />
+        </Switch>
+      </div>
+    );
+  }
 }
+export default Router;
