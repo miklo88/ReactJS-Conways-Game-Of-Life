@@ -13,27 +13,24 @@
     0 0 0 1 0
     0 1 0 0 1
 */
+
 // need to create rows and columns.
 // let cols = 0;
 // let rows = 0;
-
 // let rows;
 function bigBang() {
   // so lets create a 5x5 Grid
   let newArray = [];
-  for (let i = 0; i < 5; i++) {
-    // console.log("nested i", i[1][2]);
-    newArray[i] = [];
-    // newArray.push(i);
-    // console.log("column", i);
-    for (let j = 0; j < 5; j++) {
-      //   console.log("nested j", j[4]);
-      newArray[i][j] = [];
-      //   newArray.push(j);
-      //   console.log("row", j);
+  for (let x = 0; x < 5; x++) {
+    newArray[x] = [];
+    console.log("x", newArray[x]);
+    for (let y = 0; y < 5; y++) {
+      newArray[x][y] = [];
+      console.log("y", y);
+      console.log(newArray[x][y]);
     }
     return newArray;
     // console.log(newArray);
   }
 }
-console.table(bigBang(5));
+console.table(bigBang());
