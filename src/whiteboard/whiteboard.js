@@ -13,21 +13,29 @@
     0 0 0 1 0
     0 1 0 0 1
 */
-// CREATING 2D ARRAYS
-const rows = 3;
-const cols = 3;
-// declaring array
-const oneArray = [];
-// nested for loop
-for (let i = 0; i < rows; i++) {
-  // initiate/declare new sub array
-  oneArray[i] = [];
-  for (let j = 0; j < cols; j++) {
-    oneArray[i][j] = [];
+// sprinkling in a function
+function arrayWork() {
+  // CREATING 2D ARRAYS
+  // only inputs how many rows you will have
+  const rows = 10;
+  // only inputs how many columns you will have
+  const cols = 10;
+  // declaring array as an array. get it?
+  const oneArray = [];
+  // nested for loop. double loopin
+  for (let i = 0; i < rows; i++) {
+    // initiate/declare new sub array you have to assign another array within an array.
+    oneArray[i] = [];
+    // console.log("outer array", oneArray[i]);
+    for (let j = 0; j < cols; j++) {
+      // now declare the sub array elements
+      oneArray[i][j] = [];
+      // console.log("subarray", oneArray[i][j]);
+    }
   }
-  // console.log(oneArray);
+  return oneArray;
 }
-console.log(oneArray);
+console.log(arrayWork());
 
 // // highspeed
 // const twoArray = new Array(rows);
