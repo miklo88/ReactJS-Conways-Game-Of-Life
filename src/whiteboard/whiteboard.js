@@ -13,24 +13,36 @@
     0 0 0 1 0
     0 1 0 0 1
 */
-
-// need to create rows and columns.
-// let cols = 0;
-// let rows = 0;
-// let rows;
-function bigBang() {
-  // so lets create a 5x5 Grid
-  let newArray = [];
-  for (let x = 0; x < 5; x++) {
-    newArray[x] = [];
-    console.log("x", newArray[x]);
-    for (let y = 0; y < 5; y++) {
-      newArray[x][y] = [];
-      console.log("y", y);
-      console.log(newArray[x][y]);
-    }
-    return newArray;
-    // console.log(newArray);
+// CREATING 2D ARRAYS
+const rows = 3;
+const cols = 3;
+// declaring array
+const oneArray = [];
+// or
+// const twoArray = newArray(rows)
+// rows being passed in is the length of the newArray
+// nested for loop
+for (let i = 0; i < rows; i++) {
+  // initiate/declare new sub array
+  oneArray[i] = [];
+  for (let j = 0; j < cols; j++) {
+    oneArray[i][j] = null;
   }
+  // console.log(oneArray);
 }
-console.table(bigBang());
+console.log(oneArray);
+
+// console.log(oneArray);
+
+//what i need to see.
+// const carlsArrays = [
+//   [0, 1, 2, 3, 4],
+//   [5, 6, 7, 8, 9],
+//   [10, 11, 12, 13, 14],
+//   [15, 16, 17, 18, 19],
+//   [20, 21, 22, 23, 24],
+// ];
+// console.log(carlsArrays);
+// console.log(carlsArrays.length);
+// console.log(carlsArrays.length);
+// console.log(carlsArrays[3][2]);
