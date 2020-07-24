@@ -18,22 +18,23 @@ const rows = 3;
 const cols = 3;
 // declaring array
 const oneArray = [];
-// or
-// const twoArray = newArray(rows)
-// rows being passed in is the length of the newArray
 // nested for loop
 for (let i = 0; i < rows; i++) {
   // initiate/declare new sub array
   oneArray[i] = [];
   for (let j = 0; j < cols; j++) {
-    oneArray[i][j] = null;
+    oneArray[i][j] = [];
   }
   // console.log(oneArray);
 }
 console.log(oneArray);
 
-// console.log(oneArray);
-
+// // highspeed
+// const twoArray = new Array(rows);
+// for (let i = 0; i < twoArray.length; i++) {
+//   twoArray[i] = new Array(cols);
+// }
+// console.log(twoArray);
 //what i need to see.
 // const carlsArrays = [
 //   [0, 1, 2, 3, 4],
