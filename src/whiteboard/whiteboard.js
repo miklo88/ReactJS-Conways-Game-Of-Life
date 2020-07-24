@@ -17,9 +17,9 @@
 function arrayWork() {
   // CREATING 2D ARRAYS
   // only inputs how many rows you will have
-  const rows = 10;
+  const rows = 5;
   // only inputs how many columns you will have
-  const cols = 10;
+  const cols = 5;
   // declaring array as an array. get it?
   const oneArray = [];
   // nested for loop. double loopin
@@ -29,7 +29,7 @@ function arrayWork() {
     // console.log("outer array", oneArray[i]);
     for (let j = 0; j < cols; j++) {
       // now declare the sub array elements
-      oneArray[i][j] = [];
+      oneArray[i][j] = 0;
       // console.log("subarray", oneArray[i][j]);
     }
   }
