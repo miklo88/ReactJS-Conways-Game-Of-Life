@@ -13,29 +13,42 @@
     0 0 0 1 0
     0 1 0 0 1
 */
-// sprinkling in a function
-function arrayWork() {
+let cols = 3;
+let rows = 3;
+let grid = arrayWork(cols, rows);
+console.table(grid);
+// console.log(grid);
+console.log("grid coord", grid[2][0]);
+console.log("grid coord", grid[2][2]);
+
+// console.log("grid coord", grid[i][j]);
+// only inputs how many rows you will have
+// // only inputs how many columns you will have
+// 2D array matrix.
+function arrayWork(cols, rows) {
   // CREATING 2D ARRAYS
-  // only inputs how many rows you will have
-  const rows = 5;
-  // only inputs how many columns you will have
-  const cols = 5;
   // declaring array as an array. get it?
-  const oneArray = [];
+  const carlsGrid = [];
   // nested for loop. double loopin
-  for (let i = 0; i < rows; i++) {
+  for (let i = 0; i < cols; i++) {
     // initiate/declare new sub array you have to assign another array within an array.
-    oneArray[i] = [];
+    carlsGrid[i] = [];
+    console.log(carlsGrid[i]);
+    // FOOD FOR THOUGHT - PLAY AROUND WITH NESTED OBJECTS IN ARRAYS
+    // carlsGrid[i] = {};
     // console.log("outer array", oneArray[i]);
-    for (let j = 0; j < cols; j++) {
-      // now declare the sub array elements
-      oneArray[i][j] = 0;
-      // console.log("subarray", oneArray[i][j]);
+    for (let j = 0; j < rows; j++) {
+      carlsGrid[i][j] = Math.floor(Math.random() * 2);
+      // carlsGrid[i][j] = []; //default []'s
+      carlsGrid[i][j] = 0; //default 0's
+      // carlsGrid[0][2] = 3;
+      // carlsGrid[0][1] = 3;
+      // carlsGrid[1][0] = 3; error cannot set property of undefined. 0
     }
   }
-  return oneArray;
+  return carlsGrid;
 }
-console.log(arrayWork());
+arrayWork();
 
 // // highspeed
 // const twoArray = new Array(rows);

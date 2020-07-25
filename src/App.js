@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 // getting all the kids in the pool
 import Nav from "./nav_footer/nav";
 import Router from "./router/router";
