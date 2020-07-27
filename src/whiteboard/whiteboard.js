@@ -18,12 +18,9 @@ let rows = 3;
 let grid = arrayWork(cols, rows);
 console.table(grid);
 // console.log(grid);
-console.log("grid coord", grid[2][0]);
-console.log("grid coord", grid[2][2]);
+// console.log("grid coord", grid[2][0]);
+// console.log("grid coord", grid[2][2]);
 
-// console.log("grid coord", grid[i][j]);
-// only inputs how many rows you will have
-// // only inputs how many columns you will have
 // 2D array matrix.
 function arrayWork(cols, rows) {
   // CREATING 2D ARRAYS
@@ -33,22 +30,56 @@ function arrayWork(cols, rows) {
   for (let i = 0; i < cols; i++) {
     // initiate/declare new sub array you have to assign another array within an array.
     carlsGrid[i] = [];
-    console.log(carlsGrid[i]);
+    // console.log(carlsGrid[i]);
     // FOOD FOR THOUGHT - PLAY AROUND WITH NESTED OBJECTS IN ARRAYS
     // carlsGrid[i] = {};
     // console.log("outer array", oneArray[i]);
     for (let j = 0; j < rows; j++) {
       carlsGrid[i][j] = Math.floor(Math.random() * 2);
       // carlsGrid[i][j] = []; //default []'s
-      carlsGrid[i][j] = 0; //default 0's
-      // carlsGrid[0][2] = 3;
-      // carlsGrid[0][1] = 3;
-      // carlsGrid[1][0] = 3; error cannot set property of undefined. 0
+      // carlsGrid[i][j] = 0; //default 0's
     }
   }
   return carlsGrid;
 }
 arrayWork();
+console.log(grid[0][2]);
+console.log(grid[2][2]);
+// being able to tell if a grid cell is dead or alive!
+let dead = false;
+let alive = true;
+
+for (let i = 0; i < grid.length; i++) {
+  for (let j = 0; j < grid.length; j++) {
+    console.log(grid[i]);
+    if (grid[i][j] === 1) {
+      // console.log(alive);
+      return alive;
+    } else {
+      // console.log(dead);
+      return dead;
+    }
+  }
+}
+// console.log(grid);
+
+// let gridDimensions = 5;
+// function gridDisplay() {
+//   for (let i = 0; i < cols; i++) {
+//     // console.log("iterator", i);
+//     for (let j = 0; j < rows; j++) {
+//       // console.log(j);
+//       let x = i * gridDimensions;
+//       let y = j * gridDimensions;
+//       // console.log("x-gridDimensions", x, gridDimensions);
+//       // console.log("y-girdDimensions", y, gridDimensions);
+//     }
+//     return gridDimensions;
+//   }
+// }
+// gridDisplay();
+// console.log(gridDimensions);
+// console.log(gridDisplay());
 
 // // highspeed
 // const twoArray = new Array(rows);
