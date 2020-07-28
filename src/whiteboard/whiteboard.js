@@ -46,20 +46,54 @@ function arrayWork(cols, rows) {
 arrayWork();
 
 // neighbors
-let neighbors = arrayWork(cols, rows);
-for (let i = -1; cols.length + 2; ) {
-  // console.log(i);
-  let neighbors = grid[i];
-  console.log(neighbors);
-  for (let j = -1; rows.length + 2; ) {
-    let neighbors = grid[i][j];
-    console.log("neighbors-log", neighbors);
+function neighbors(grid, x, y) {
+  // console.log(x, y);
+  // console.log(grid.length);
+  // let neighbors = grid[x][y];
+  for (let i = 0; i < x; i++) {
+    for (let j = 0; j < y; j++) {
+      let neighbors = [
+        // // above
+        [i - 1, j - 1],
+        [i, j - 1],
+        [i + 1, j - 1],
+        // // left side
+        [i - 1, j],
+        // // middle
+        // [i, j],
+        //right side
+        [i + 1, j],
+        // // below
+        [i - 1, j + 1],
+        [i, j + 1],
+        [i + 1, j + 1],
+      ];
+      // for all elements found you must add to a new neighbors list.
+      console.log(neighbors);
+      // console.log(neighbors[(0, 1)]);
+      // console.log(neighbors[(0, 2)]);
+      // console.log(neighbors[(1, 0)]);
+      // console.log(neighbors[(1, 1)]);
+      // console.log(neighbors[(1, 2)]);
+      // console.log(neighbors[(2, 0)]);
+      // console.log(neighbors[(2, 1)]);
+      // console.log(neighbors[(2, 2)]);
+      // let newNeighbors = [];
+      // console.log(neighbors[(i, j)]);
+      // newNeighbors.push(neighbors[(i, j)]);
+      // console.log(newNeighbors);
+    }
+
+    return neighbors;
   }
 }
-console.log(neighbors);
-// returning [ [ 0, 1, 0 ], [ 1, 0, 0 ], [ 0, 1, 1 ] ]
-// remember you have to subtract the current cell.
-// now define what that is
+// console.log(neighbors(0, 0));
+
+console.log("grid", grid);
+console.log(neighbors(grid, 3, 3));
+
+// console.log(grid);
+// console.log("neighbors-log", neighbors);
 
 // being able to tell if a grid cell is dead or alive!
 // let dead = false;
