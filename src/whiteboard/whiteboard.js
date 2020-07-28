@@ -14,8 +14,8 @@
     0 1 0 0 1
 */
 // global variables
-let cols = 3;
-let rows = 3;
+let cols = 5;
+let rows = 5;
 let grid = arrayWork(cols, rows);
 console.table(grid);
 // console.log(grid);
@@ -74,19 +74,16 @@ function neighbors(grid, x, y) {
       // console.log(neighbors[(1, 1)]);
       // console.log(neighbors[(2, 2)]);
       // let newNeighbors = [];
-      console.log(neighbors[[0][0]]);
-      console.log(grid[0][1]);
-      // newNeighbors.push(neighbors[(i, j)]);
-      // console.log(newNeighbors);
+      // console.log(neighbors[[0][0]]);
+      console.log(grid[i][j]);
     }
 
     return neighbors;
   }
 }
 // console.log(neighbors(0, 0));
-
 console.log("grid", grid);
-console.log(neighbors(grid, 3, 3));
+console.log(neighbors(grid, 5, 5));
 
 // console.log(grid);
 // console.log("neighbors-log", neighbors);

@@ -27,6 +27,53 @@ class Grid extends React.Component {
     arrayWork();
     console.table(grid);
 
+    // neighbors
+    function neighbors(grid, x, y) {
+      //loopin back through the array to find neighbors
+      for (let i = 0; i < x; i++) {
+        for (let j = 0; j < y; j++) {
+          // array elements surrouding current element.
+          let neighbors = [
+            // // above
+            [i - 1, j - 1],
+            [i, j - 1],
+            [i + 1, j - 1],
+            // // left side
+            [i - 1, j],
+            // // middle
+            // [i, j],
+            //right side
+            [i + 1, j],
+            // // below
+            [i - 1, j + 1],
+            [i, j + 1],
+            [i + 1, j + 1],
+          ];
+          console.log(grid[i][j]);
+
+          return neighbors;
+        }
+      }
+    }
+    console.log("grid", grid);
+    console.log(neighbors(grid, 5, 5));
+    //toggling grid cells with either 1 or 0
+    console.log("0", grid[0][0]);
+    console.log("0", grid[0][1]);
+    console.log("0", grid[0][2]);
+    console.log("0", grid[0][3]);
+    console.log("0", grid[0][4]);
+    console.log("2", grid[2][0]);
+    console.log("2", grid[2][1]);
+    console.log("2", grid[2][2]);
+    console.log("2", grid[2][3]);
+    console.log("2", grid[2][4]);
+    console.log("4", grid[4][0]);
+    console.log("4", grid[4][1]);
+    console.log("4", grid[4][2]);
+    console.log("4", grid[4][3]);
+    console.log("4", grid[4][4]);
+
     ////// if grid cell is dead or alive.
     // let dead = false;
     // let alive = true;
