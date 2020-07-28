@@ -26,31 +26,30 @@ class Grid extends React.Component {
     }
     arrayWork();
     console.table(grid);
-    // // displaying grid
-    // let gridDimensions = 5;
-    // function gridDisplay() {
-    //   for (let i = 0; i < cols; i++) {
-    //     // console.log("iterator", i);
-    //     for (let j = 0; j < rows; j++) {
-    //       // console.log(j);
-    //       let x = i * gridDimensions;
-    //       let y = j * gridDimensions;
-    //       console.log("x-gridDimensions", x, gridDimensions);
-    //       console.log("y-girdDimensions", y, gridDimensions);
+
+    ////// if grid cell is dead or alive.
+    // let dead = false;
+    // let alive = true;
+    // for (let i = 0; i < grid.length; i++) {
+    //   for (let j = 0; j < grid.length; j++) {
+    //     // console.log(grid[i]);
+    //     if (grid[i][j] === 1) {
+    //       console.log(alive);
+    //       // return alive;
+    //     } else {
+    //       console.log(dead);
+    //       // return dead;
     //     }
-    //     return gridDimensions;
     //   }
     // }
-    // gridDisplay();
-    // // console.log(gridDimensions);
-    // console.log(gridDisplay(grid));
 
     return (
       <div className='grid-component'>
         <Block />
         <div className='grid'>{grid}</div>
+        {/* <p className='alive'>{alive}</p>?<p className='dead'>{dead}</p> */}
         {/* <div className='grid'>{gridDimensions}</div> */}
-
+        {/* <p>Square</p> */}
         {/* create a form out of this. */}
         {/* <div className='grid-cols'>{cols}</div> */}
         {/* <div className='grid-rows'>{rows}</div> */}

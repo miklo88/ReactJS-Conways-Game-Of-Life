@@ -13,6 +13,7 @@
     0 0 0 1 0
     0 1 0 0 1
 */
+// global variables
 let cols = 3;
 let rows = 3;
 let grid = arrayWork(cols, rows);
@@ -43,26 +44,51 @@ function arrayWork(cols, rows) {
   return carlsGrid;
 }
 arrayWork();
-console.log(grid[0][2]);
-console.log(grid[2][2]);
-// being able to tell if a grid cell is dead or alive!
-let dead = false;
-let alive = true;
 
-for (let i = 0; i < grid.length; i++) {
-  for (let j = 0; j < grid.length; j++) {
-    console.log(grid[i]);
-    if (grid[i][j] === 1) {
-      // console.log(alive);
-      return alive;
-    } else {
-      // console.log(dead);
-      return dead;
-    }
+// neighbors
+let neighbors = arrayWork(cols, rows);
+for (let i = -1; cols.length + 2; ) {
+  // console.log(i);
+  let neighbors = grid[i];
+  console.log(neighbors);
+  for (let j = -1; rows.length + 2; ) {
+    let neighbors = grid[i][j];
+    console.log("neighbors-log", neighbors);
   }
 }
-// console.log(grid);
+console.log(neighbors);
+// returning [ [ 0, 1, 0 ], [ 1, 0, 0 ], [ 0, 1, 1 ] ]
+// remember you have to subtract the current cell.
+// now define what that is
 
+// being able to tell if a grid cell is dead or alive!
+// let dead = false;
+// let alive = true;
+// for (let i = 0; i < grid.length; i++) {
+//   for (let j = 0; j < grid.length; j++) {
+//     // console.log(grid[i]);
+//     if (grid[i][j] === 1) {
+//       console.log(alive);
+//       // return alive;
+//     } else {
+//       console.log(dead);
+//       // return dead;
+//     }
+//   }
+// }
+
+// console.log("row 0", grid[0][0]);
+// console.log("row 0", grid[0][1]);
+// console.log("row 0", grid[0][2]);
+// console.log("row 1", grid[1][0]);
+// console.log("row 1", grid[1][1]);
+// console.log("row 1", grid[1][2]);
+// console.log("row 2", grid[2][0]);
+// console.log("row 2", grid[2][1]);
+// console.log("row 2", grid[2][2]);
+
+// console.log(grid);
+// display function
 // let gridDimensions = 5;
 // function gridDisplay() {
 //   for (let i = 0; i < cols; i++) {
