@@ -46,7 +46,7 @@ function arrayWork(cols, rows) {
 arrayWork();
 
 // neighbors
-function neighbors(grid, x, y) {
+function myNeighbors(grid, x, y) {
   // console.log(x, y);
   // console.log(grid.length);
   // let neighbors = grid[x][y];
@@ -76,14 +76,13 @@ function neighbors(grid, x, y) {
       // let newNeighbors = [];
       // console.log(neighbors[[0][0]]);
       console.log(grid[i][j]);
+      return neighbors;
     }
-
-    return neighbors;
   }
 }
 // console.log(neighbors(0, 0));
 console.log("grid", grid);
-console.log(neighbors(grid, 5, 5));
+console.log(myNeighbors(grid, 5, 5));
 
 // console.log(grid);
 // console.log("neighbors-log", neighbors);

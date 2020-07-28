@@ -28,7 +28,7 @@ class Grid extends React.Component {
     console.table(grid);
 
     // neighbors
-    function neighbors(grid, x, y) {
+    function myNeighbors(grid, x, y) {
       //loopin back through the array to find neighbors
       for (let i = 0; i < x; i++) {
         for (let j = 0; j < y; j++) {
@@ -50,13 +50,12 @@ class Grid extends React.Component {
             [i + 1, j + 1],
           ];
           console.log(grid[i][j]);
-
           return neighbors;
         }
       }
     }
     console.log("grid", grid);
-    console.log(neighbors(grid, 5, 5));
+    console.log(myNeighbors(grid, 5, 5));
     //toggling grid cells with either 1 or 0
     console.log("0", grid[0][0]);
     console.log("0", grid[0][1]);
