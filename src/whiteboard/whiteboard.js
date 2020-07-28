@@ -70,16 +70,12 @@ function neighbors(grid, x, y) {
       ];
       // for all elements found you must add to a new neighbors list.
       console.log(neighbors);
-      // console.log(neighbors[(0, 1)]);
-      // console.log(neighbors[(0, 2)]);
-      // console.log(neighbors[(1, 0)]);
+      // console.log(neighbors[(0, 0)]);
       // console.log(neighbors[(1, 1)]);
-      // console.log(neighbors[(1, 2)]);
-      // console.log(neighbors[(2, 0)]);
-      // console.log(neighbors[(2, 1)]);
       // console.log(neighbors[(2, 2)]);
       // let newNeighbors = [];
-      // console.log(neighbors[(i, j)]);
+      console.log(neighbors[[0][0]]);
+      console.log(grid[0][1]);
       // newNeighbors.push(neighbors[(i, j)]);
       // console.log(newNeighbors);
     }
