@@ -1,8 +1,19 @@
 import React from "react";
 import "./block.scss";
 class Block extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
-    return <div className='block-component'></div>;
+    return (
+      <div
+        className={
+          this.props.live ? "block-component-alive" : "block-component-dead"
+        }
+        onClick={() => this.props.storeCell(this.props.position)}
+      ></div>
+    );
   }
 }
 

@@ -5,8 +5,8 @@ import React from "react";
 import "./grid.scss";
 // Grid Component
 class Grid extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       display: "grid",
       // change to => default grid size
