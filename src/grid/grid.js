@@ -1,28 +1,22 @@
 import React from "react";
 // block component
-// import Block from "../block/block";
+import Block from "../block/block";
 // styles
 import "./grid.scss";
 // Grid Component
 class Grid extends React.Component {
   constructor() {
     super();
-    this.state = { display: "grid" };
-    // this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      // initial grid state needed
+      // display: [],
+      display: "grid",
+      cols: 5,
+      rows: 5,
+    };
   }
-  // // //start button setState
-  // startButton(grid) {
-  //   this.setState({ display: grid });
-  // }
-  // // //handleevents `buttons`
-  // handleChange(e) {
-  //   e.preventDefault();
-  //   const { grid } = e.target.value;
-  //   this.props.startButton(grid);
-  // }
   render() {
-    // //changing grid state
-
+    // //changing grid state3
     setTimeout(() => {
       this.setState({ display: grid });
     }, 60000);
@@ -32,7 +26,7 @@ class Grid extends React.Component {
     let grid = initArray(cols, rows);
     console.log("Grid Array");
     console.table(grid);
-    // grid function
+    // grid creation function
     function initArray(cols, rows) {
       let carlsGrid = [];
       for (let i = 0; i < cols; i++) {
@@ -79,9 +73,10 @@ class Grid extends React.Component {
           }
         }
       }
-      // console.log("newArray", newArray);
-      return (newArray = grid);
+      console.log("newArray", newArray);
+      return newArray === grid;
     }
+    // console.log(newArray);
     deadAlive(grid);
     console.log("deadAlive func", deadAlive(grid));
     // neighbors
@@ -116,17 +111,8 @@ class Grid extends React.Component {
     return (
       <div className='grid-component'>
         <div className='grid'>{this.state.display}</div>
-        {/* start */}
-        <button
-        // value={this.props.value}
-        // onChange={this.handleChange.bind(this)}
-        >
-          Start
-        </button>
-        {/* stop */}
-        <button>Stop</button>
-        {/* clear */}
-        <button>Clear</button>
+
+        <Block />
       </div>
     );
   }
