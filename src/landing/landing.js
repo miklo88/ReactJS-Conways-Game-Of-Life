@@ -1,6 +1,8 @@
 import React from "react";
 import Grid from "../grid/grid";
-
+//styles
+// import "./landing.scss";
+//homepage UI page
 class Landing extends React.Component {
   render() {
     return (
@@ -26,13 +28,16 @@ class Landing extends React.Component {
             // onChange={}
           />
         </label>
+        {/* Grid component */}
         <Grid />
+        {/* Grid component */}
         <div className='button-group'>
-          <button>Start</button>
+          {/* start */}
+          <button className='btn start'>Start</button>
           {/* stop */}
-          <button>Stop</button>
+          <button className='stop btn'>Stop</button>
           {/* clear */}
-          <button>Clear</button>
+          <button className='clear btn'>Clear</button>
         </div>
       </div>
     );
