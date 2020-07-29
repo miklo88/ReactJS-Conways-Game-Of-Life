@@ -85,6 +85,22 @@ function myNeighbors(grid, x, y) {
 // console.log("grid", grid);
 // console.log(myNeighbors(grid, 5, 5));
 myNeighbors(grid, 5, 5);
+//toggling grid cells with either 1 or 0
+// console.log("0", grid[0][0]);
+// console.log("0", grid[0][1]);
+// console.log("0", grid[0][2]);
+// console.log("0", grid[0][3]);
+// console.log("0", grid[0][4]);
+// console.log("2", grid[2][0]);
+// console.log("2", grid[2][1]);
+// console.log("2", grid[2][2]);
+// console.log("2", grid[2][3]);
+// console.log("2", grid[2][4]);
+// console.log("4", grid[4][0]);
+// console.log("4", grid[4][1]);
+// console.log("4", grid[4][2]);
+// console.log("4", grid[4][3]);
+// console.log("4", grid[4][4]);
 
 // console.log(grid);
 // console.log("neighbors-log", neighbors);
