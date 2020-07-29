@@ -109,10 +109,40 @@ class Grid extends React.Component {
     console.log("myNeighbors func", myNeighbors(grid, 5, 5));
     //component render
     return (
+      //   <Block />
+      // UI for the game
       <div className='grid-component'>
-        <div className='grid'>{this.state.display}</div>
+        <h1>Conways Game of Life</h1>
 
-        <Block />
+        <label className='label'>
+          Rows
+          <input
+            className='input'
+            type='text'
+            // value={}
+            // onChange={}
+          />
+        </label>
+        <label className='label'>
+          Columns
+          <input
+            className='input'
+            type='text'
+            // value={}
+            // onChange={}
+          />
+        </label>
+        {/* Grid component */}
+        <div className='grid'>{this.state.display}</div>
+        {/* Grid component */}
+        <div className='button-group'>
+          {/* start */}
+          <button className='btn start'>Start</button>
+          {/* stop */}
+          <button className='stop btn'>Stop</button>
+          {/* clear */}
+          <button className='clear btn'>Clear</button>
+        </div>
       </div>
     );
   }
