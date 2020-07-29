@@ -16,14 +16,16 @@
 // global variables
 let cols = 5;
 let rows = 5;
-let grid = arrayWork(cols, rows);
+let grid = initArray(cols, rows);
+console.log("Initial Table Below");
 console.table(grid);
+console.log(grid);
 // console.log(grid);
 // console.log("grid coord", grid[2][0]);
 // console.log("grid coord", grid[2][2]);
 
 // 2D array matrix.
-function arrayWork(cols, rows) {
+function initArray(cols, rows) {
   // CREATING 2D ARRAYS
   // declaring array as an array. get it?
   const carlsGrid = [];
@@ -37,13 +39,13 @@ function arrayWork(cols, rows) {
     // console.log("outer array", oneArray[i]);
     for (let j = 0; j < rows; j++) {
       carlsGrid[i][j] = Math.floor(Math.random() * 2);
-      // carlsGrid[i][j] = []; //default []'s
+      // carlsGrid[i][j] = onOff(grid);
       // carlsGrid[i][j] = 0; //default 0's
     }
   }
   return carlsGrid;
 }
-arrayWork();
+initArray(cols, rows);
 
 // neighbors
 function myNeighbors(grid, x, y) {
@@ -69,22 +71,23 @@ function myNeighbors(grid, x, y) {
         [i + 1, j + 1],
       ];
       // for all elements found you must add to a new neighbors list.
-      console.log(neighbors);
+      // console.log("neighbors", neighbors);
       // console.log(neighbors[(0, 0)]);
       // console.log(neighbors[(1, 1)]);
       // console.log(neighbors[(2, 2)]);
       // let newNeighbors = [];
       // console.log(neighbors[[0][0]]);
-      console.log(grid[i][j]);
-      console.log(grid[2][2]);
+      console.log("grid[i][j]", grid[i][j]);
+      // console.log("grid[2][2]", grid[2][2]);
       return neighbors;
     }
   }
 }
 // console.log(neighbors(0, 0));
 // console.log("grid", grid);
-// console.log(myNeighbors(grid, 5, 5));
 myNeighbors(grid, 5, 5);
+console.log("myNeighbors func", myNeighbors(grid, 5, 5));
+
 //toggling grid cells with either 1 or 0
 // console.log("0", grid[0][0]);
 // console.log("0", grid[0][1]);
@@ -93,7 +96,7 @@ myNeighbors(grid, 5, 5);
 // console.log("0", grid[0][4]);
 // console.log("2", grid[2][0]);
 // console.log("2", grid[2][1]);
-// console.log("2", grid[2][2]);
+console.log("grid[2][2]", grid[2][2]);
 // console.log("2", grid[2][3]);
 // console.log("2", grid[2][4]);
 // console.log("4", grid[4][0]);
@@ -106,46 +109,47 @@ myNeighbors(grid, 5, 5);
 // console.log("neighbors-log", neighbors);
 
 // being able to tell if a grid cell is dead or alive!
-function onOff(grid) {
-  let dead = false;
-  let alive = true;
+function deadAlive(grid) {
+  // let dead = false;
+  // let alive = true;
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid.length; j++) {
       // console.log(grid[i]);
       if (grid[i][j] === 1) {
         // console.log(alive);
-        return alive;
+        return 1;
       } else {
         // console.log(dead);
-        return dead;
+        return 0;
       }
     }
   }
   // what do i need for this function to compare the grids current state
   // to the alive or dead variables
   // renaming the grid creation function
-  let newArray = arrayWork(cols, rows);
+  let newArray = initArray(cols, rows);
   //looping through the grid
   for (let i = 0; i < cols; i++) {
     for (let j = 0; j < rows; j++) {
       //renaming the myNeighbors function
       let amigos = myNeighbors(grid, i, j);
+      let state = newArray[i][j];
       //where the RULES OF LIFE ARE APPLIED
-      if (newArray[i][j] === dead && amigos === 3) {
-        return newArray[i][j] === alive;
-      } else if (newArray[i][j] === alive && (amigos < 2 || amigos > 3)) {
-        return newArray[i][j];
+      if (state === 0 && amigos === 3) {
+        return state === 1;
+      } else if (state === 1 && (amigos < 2 || amigos > 3)) {
+        return state;
       } else {
-        return newArray[i][j];
+        console.log(state);
+        return state[i][j];
       }
-      // console.log(newArray[i][j]);
     }
   }
-  // console.log(newArray);
+  console.log("newArray", newArray);
   return (newArray = grid);
 }
-onOff(grid);
-console.log(onOff(grid));
+deadAlive(grid);
+console.log("deadAlive func", deadAlive(grid));
 console.table(grid);
 
 // console.log("row 0", grid[0][0]);

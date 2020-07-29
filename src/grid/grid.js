@@ -1,28 +1,39 @@
 import React from "react";
 // block component
-import Block from "../block/block";
+// import Block from "../block/block";
 // styles
 import "./grid.scss";
-
+// Grid Component
 class Grid extends React.Component {
   constructor() {
     super();
     this.state = { display: "grid" };
+    // this.handleChange = this.handleChange.bind(this);
   }
+  // // //start button setState
+  // startButton(grid) {
+  //   this.setState({ display: grid });
+  // }
+  // // //handleevents `buttons`
+  // handleChange(e) {
+  //   e.preventDefault();
+  //   const { grid } = e.target.value;
+  //   this.props.startButton(grid);
+  // }
   render() {
-    //changing grid state
+    // //changing grid state
+
     setTimeout(() => {
       this.setState({ display: grid });
-    }, 20000);
-
+    }, 60000);
     //  grid creation logic
-    // variables cols, rows, grid
     let cols = 5;
     let rows = 5;
-    let grid = arrayWork(cols, rows);
-
+    let grid = initArray(cols, rows);
+    console.log("Grid Array");
+    console.table(grid);
     // grid function
-    function arrayWork(cols, rows) {
+    function initArray(cols, rows) {
       let carlsGrid = [];
       for (let i = 0; i < cols; i++) {
         //array declaration
@@ -34,11 +45,9 @@ class Grid extends React.Component {
       }
       return carlsGrid;
     }
-    arrayWork();
-    console.table(grid);
-    console.log("initial array");
-    // being able to tell if a grid cell is dead or alive!
-    function onOff(grid) {
+    console.log("intitArray func", initArray(cols, rows));
+    // being able to tell if a grid cell is dead or alive
+    function deadAlive(grid) {
       let dead = false;
       let alive = true;
       for (let i = 0; i < grid.length; i++) {
@@ -53,9 +62,8 @@ class Grid extends React.Component {
           }
         }
       }
-
       // renaming the grid creation function
-      let newArray = arrayWork(cols, rows);
+      let newArray = initArray(cols, rows);
       //looping through the grid
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
@@ -69,16 +77,14 @@ class Grid extends React.Component {
           } else {
             return newArray[i][j];
           }
-          // console.log(newArray[i][j]);
         }
       }
-      // console.table(newArray);
-
+      // console.log("newArray", newArray);
       return (newArray = grid);
     }
-    onOff(grid);
-
-    // neighbors creation
+    deadAlive(grid);
+    console.log("deadAlive func", deadAlive(grid));
+    // neighbors
     function myNeighbors(grid, x, y) {
       //loopin back through the array to find neighbors
       for (let i = 0; i < x; i++) {
@@ -100,22 +106,30 @@ class Grid extends React.Component {
             [i, j + 1],
             [i + 1, j + 1],
           ];
-          console.log(grid[i][j]);
           return neighbors;
         }
       }
     }
     myNeighbors(grid, 5, 5);
-    // console.log("grid", grid);
-    // console.log(myNeighbors(grid, 5, 5));
-
+    console.log("myNeighbors func", myNeighbors(grid, 5, 5));
+    //component render
     return (
       <div className='grid-component'>
-        <Block />
-        {/* <div className='grid'>{grid}</div> */}
         <div className='grid'>{this.state.display}</div>
+        {/* start */}
+        <button
+        // value={this.props.value}
+        // onChange={this.handleChange.bind(this)}
+        >
+          Start
+        </button>
+        {/* stop */}
+        <button>Stop</button>
+        {/* clear */}
+        <button>Clear</button>
       </div>
     );
   }
 }
+
 export default Grid;
