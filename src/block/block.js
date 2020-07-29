@@ -4,6 +4,8 @@ class Block extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+
+    this.storeCell = this.storeCell.bind(this);
   }
   render() {
     return (

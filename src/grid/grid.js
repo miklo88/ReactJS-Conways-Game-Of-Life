@@ -3,21 +3,59 @@ import React from "react";
 // import Block from "../block/block";
 // styles
 import "./grid.scss";
+import Logic from "../utils/logic";
 // Grid Component
 class Grid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       display: "grid",
+      // logic: new Rules()
       // change to => default grid size
-      // size: [25,25],
+      size: [25, 25],
+      gameOn: false,
+      // generation: 0
     };
+    //binding state to handleChanges
     // this.handleColChange = this.handleColChange.bind(this);
     // this.handleRowChange = this.handleRowChange.bind(this);
-    // this.startGame = this.startGame.bind(this);
-    // this.stopGame = this.stopGame.bind(this);
+    this.startGame = this.startGame.bind(this);
+    this.stopGame = this.stopGame.bind(this);
     // this.clearGame = this.clearGame.bind(this);
+    this.renderGame = this.renderGame.bind(this);
   }
+  // event handler crew
+  //input column change
+  handleColChange(e) {
+    if (!this.state.gameOn) {
+      let actualSize = this.state.size;
+      if (e.target.value < 25) {
+        actualSize[0] = e.target.value;
+      } else {
+        actualSize[0] = 25;
+      }
+      this.setState({
+        size: actualSize,
+      });
+      this.renderGame();
+    }
+  }
+  //input row change
+  handleRowChange(e) {
+    if (!this.state.gameOn) {
+      let actualSize = this.state.size;
+      if (e.target.value < 25) {
+        actualSize[1] = e.target.value;
+      } else {
+        actualSize[1] = 25;
+      }
+      this.setState({
+        size: actualSize,
+      });
+      this.renderGame();
+    }
+  }
+
   render() {
     // //changing grid state3
     setTimeout(() => {
@@ -154,6 +192,7 @@ class Grid extends React.Component {
           <button className='clear btn' onClick={this.clearGame}>
             Clear
           </button>
+          <div>Speed:</div>
         </div>
       </div>
     );
