@@ -1,6 +1,6 @@
 import React from "react";
 // block component
-import Block from "../block/block";
+// import Block from "../block/block";
 // styles
 import "./grid.scss";
 // Grid Component
@@ -8,12 +8,15 @@ class Grid extends React.Component {
   constructor() {
     super();
     this.state = {
-      // initial grid state needed
-      // display: [],
       display: "grid",
-      cols: 5,
-      rows: 5,
+      // change to => default grid size
+      // size: [25,25],
     };
+    // this.handleColChange = this.handleColChange.bind(this);
+    // this.handleRowChange = this.handleRowChange.bind(this);
+    // this.startGame = this.startGame.bind(this);
+    // this.stopGame = this.stopGame.bind(this);
+    // this.clearGame = this.clearGame.bind(this);
   }
   render() {
     // //changing grid state3
@@ -46,7 +49,6 @@ class Grid extends React.Component {
       let alive = true;
       for (let i = 0; i < grid.length; i++) {
         for (let j = 0; j < grid.length; j++) {
-          // console.log(grid[i]);
           if (grid[i][j] === 1) {
             // console.log(alive);
             return alive;
@@ -132,16 +134,26 @@ class Grid extends React.Component {
             // onChange={}
           />
         </label>
+        <div className='generation'>
+          {/* get state for generation aka count {this.state.logic.getGeneration()}*/}
+          Generation:
+        </div>
         {/* Grid component */}
         <div className='grid'>{this.state.display}</div>
         {/* Grid component */}
         <div className='button-group'>
           {/* start */}
-          <button className='btn start'>Start</button>
+          <button className='btn start' onClick={this.startGame}>
+            Start
+          </button>
           {/* stop */}
-          <button className='stop btn'>Stop</button>
+          <button className='stop btn' onClick={this.stopGame}>
+            Stop
+          </button>
           {/* clear */}
-          <button className='clear btn'>Clear</button>
+          <button className='clear btn' onClick={this.clearGame}>
+            Clear
+          </button>
         </div>
       </div>
     );
