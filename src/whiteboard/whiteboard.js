@@ -14,16 +14,18 @@
     0 1 0 0 1
 */
 // global variables
-let cols = 3;
-let rows = 3;
-let grid = arrayWork(cols, rows);
+let cols = 5;
+let rows = 5;
+let grid = initArray(cols, rows);
+console.log("Initial Table Below");
 console.table(grid);
+console.log(grid);
 // console.log(grid);
 // console.log("grid coord", grid[2][0]);
 // console.log("grid coord", grid[2][2]);
 
 // 2D array matrix.
-function arrayWork(cols, rows) {
+function initArray(cols, rows) {
   // CREATING 2D ARRAYS
   // declaring array as an array. get it?
   const carlsGrid = [];
@@ -37,16 +39,16 @@ function arrayWork(cols, rows) {
     // console.log("outer array", oneArray[i]);
     for (let j = 0; j < rows; j++) {
       carlsGrid[i][j] = Math.floor(Math.random() * 2);
-      // carlsGrid[i][j] = []; //default []'s
+      // carlsGrid[i][j] = onOff(grid);
       // carlsGrid[i][j] = 0; //default 0's
     }
   }
   return carlsGrid;
 }
-arrayWork();
+initArray(cols, rows);
 
 // neighbors
-function neighbors(grid, x, y) {
+function myNeighbors(grid, x, y) {
   // console.log(x, y);
   // console.log(grid.length);
   // let neighbors = grid[x][y];
@@ -69,43 +71,86 @@ function neighbors(grid, x, y) {
         [i + 1, j + 1],
       ];
       // for all elements found you must add to a new neighbors list.
-      console.log(neighbors);
+      // console.log("neighbors", neighbors);
       // console.log(neighbors[(0, 0)]);
       // console.log(neighbors[(1, 1)]);
       // console.log(neighbors[(2, 2)]);
       // let newNeighbors = [];
-      console.log(neighbors[[0][0]]);
-      console.log(grid[0][1]);
-      // newNeighbors.push(neighbors[(i, j)]);
-      // console.log(newNeighbors);
+      // console.log(neighbors[[0][0]]);
+      console.log("grid[i][j]", grid[i][j]);
+      // console.log("grid[2][2]", grid[2][2]);
+      return neighbors;
     }
-
-    return neighbors;
   }
 }
 // console.log(neighbors(0, 0));
+// console.log("grid", grid);
+myNeighbors(grid, 5, 5);
+console.log("myNeighbors func", myNeighbors(grid, 5, 5));
 
-console.log("grid", grid);
-console.log(neighbors(grid, 3, 3));
+//toggling grid cells with either 1 or 0
+// console.log("0", grid[0][0]);
+// console.log("0", grid[0][1]);
+// console.log("0", grid[0][2]);
+// console.log("0", grid[0][3]);
+// console.log("0", grid[0][4]);
+// console.log("2", grid[2][0]);
+// console.log("2", grid[2][1]);
+console.log("grid[2][2]", grid[2][2]);
+// console.log("2", grid[2][3]);
+// console.log("2", grid[2][4]);
+// console.log("4", grid[4][0]);
+// console.log("4", grid[4][1]);
+// console.log("4", grid[4][2]);
+// console.log("4", grid[4][3]);
+// console.log("4", grid[4][4]);
 
 // console.log(grid);
 // console.log("neighbors-log", neighbors);
 
 // being able to tell if a grid cell is dead or alive!
-// let dead = false;
-// let alive = true;
-// for (let i = 0; i < grid.length; i++) {
-//   for (let j = 0; j < grid.length; j++) {
-//     // console.log(grid[i]);
-//     if (grid[i][j] === 1) {
-//       console.log(alive);
-//       // return alive;
-//     } else {
-//       console.log(dead);
-//       // return dead;
-//     }
-//   }
-// }
+function deadAlive(grid) {
+  // let dead = false;
+  // let alive = true;
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid.length; j++) {
+      // console.log(grid[i]);
+      if (grid[i][j] === 1) {
+        // console.log(alive);
+        return 1;
+      } else {
+        // console.log(dead);
+        return 0;
+      }
+    }
+  }
+  // what do i need for this function to compare the grids current state
+  // to the alive or dead variables
+  // renaming the grid creation function
+  let newArray = initArray(cols, rows);
+  //looping through the grid
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      //renaming the myNeighbors function
+      let amigos = myNeighbors(grid, i, j);
+      let state = newArray[i][j];
+      //where the RULES OF LIFE ARE APPLIED
+      if (state === 0 && amigos === 3) {
+        return state === 1;
+      } else if (state === 1 && (amigos < 2 || amigos > 3)) {
+        return state;
+      } else {
+        console.log(state);
+        return state[i][j];
+      }
+    }
+  }
+  console.log("newArray", newArray);
+  return (newArray = grid);
+}
+deadAlive(grid);
+console.log("deadAlive func", deadAlive(grid));
+console.table(grid);
 
 // console.log("row 0", grid[0][0]);
 // console.log("row 0", grid[0][1]);
@@ -116,26 +161,6 @@ console.log(neighbors(grid, 3, 3));
 // console.log("row 2", grid[2][0]);
 // console.log("row 2", grid[2][1]);
 // console.log("row 2", grid[2][2]);
-
-// console.log(grid);
-// display function
-// let gridDimensions = 5;
-// function gridDisplay() {
-//   for (let i = 0; i < cols; i++) {
-//     // console.log("iterator", i);
-//     for (let j = 0; j < rows; j++) {
-//       // console.log(j);
-//       let x = i * gridDimensions;
-//       let y = j * gridDimensions;
-//       // console.log("x-gridDimensions", x, gridDimensions);
-//       // console.log("y-girdDimensions", y, gridDimensions);
-//     }
-//     return gridDimensions;
-//   }
-// }
-// gridDisplay();
-// console.log(gridDimensions);
-// console.log(gridDisplay());
 
 // // highspeed
 // const twoArray = new Array(rows);
