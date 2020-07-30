@@ -7,6 +7,7 @@ class Block extends React.Component {
   }
   render() {
     return <div className='block-component'></div>;
+    // along the lines if props or state is true, then this styles, if false other style.
   }
 }
 

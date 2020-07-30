@@ -105,18 +105,49 @@ class Grid extends React.Component {
     //component render
     return (
       <div className='grid-component'>
+        {/* for future cols and rows adjusting */}
+        <div className='label-container'>
+          <label className='label'>
+            Columns:
+            <input type='text' className='input' />
+          </label>
+          <label className='label'>
+            Rows:
+            <input type='text' className='input' />
+          </label>
+        </div>
+        {/* GRID CONTAINER */}
         <div className='grid'>{this.state.display}</div>
-        {/* start */}
-        <button
-        // value={this.props.value}
-        // onChange={this.handleChange.bind(this)}
-        >
-          Start
-        </button>
-        {/* stop */}
-        <button>Stop</button>
-        {/* clear */}
-        <button>Clear</button>
+        <div className='button-container'>
+          {/* start */}
+          <button
+            className='btn start'
+            // value={this.props.value}
+            // onClick={this.handleChange.bind(this)}
+          >
+            Start
+          </button>
+          {/* stop */}
+          <button
+            className='btn stop'
+            // onClick={this.handlechange}
+          >
+            Stop
+          </button>
+          {/* clear */}
+          <button
+            className='btn clear'
+            //onClick={this.handleChange}
+          >
+            Clear
+          </button>
+          <button
+            className='btn step'
+            //onClick={this.handleChange}
+          >
+            Step
+          </button>
+        </div>
         <Block />
       </div>
     );
