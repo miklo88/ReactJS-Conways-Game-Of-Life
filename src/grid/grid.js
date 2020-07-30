@@ -4,14 +4,14 @@ import Block from "../block/block";
 
 // styles
 import "./grid.scss";
-// import Logic from "../utils/logic";
+import Logic from "../utils/logic";
 // Grid Component
 class Grid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       // display: "grid",
-      // logic: new Rules()
+      logic: new Logic(),
       // change to => default grid size 25,25
       size: [25, 25],
       gameOn: false,
@@ -22,7 +22,7 @@ class Grid extends React.Component {
     this.handleRowChange = this.handleRowChange.bind(this);
     this.startGame = this.startGame.bind(this);
     this.stopGame = this.stopGame.bind(this);
-    this.clearGame = this.clearGame.bind(this);
+    // this.clearGame = this.clearGame.bind(this);
     this.renderGame = this.renderGame.bind(this);
   }
   // event handler crew
@@ -60,7 +60,7 @@ class Grid extends React.Component {
   startGame() {
     if (!this.state.gameOn) {
       this.setState({ gameOn: true }, () => {
-        this.generationRef = setGeneration(
+        this.generationRef = setInterval(
           () => this.runGame(),
           this.state.generation
         );
@@ -74,13 +74,17 @@ class Grid extends React.Component {
       },
       () => {
         if (this.generationRef) {
-          clearGeneration(this.generationRef);
+          clearInterval(this.generationRef);
         }
       }
     );
   }
   // clearGame() {}
-  runGame() {}
+  runGame() {
+    this.setState({
+      logic: this.state.logic.addGeneration(),
+    });
+  }
 
   renderGame() {
     let newGame = [];
@@ -152,7 +156,10 @@ class Grid extends React.Component {
             Stop
           </button>
           {/* CLEAR */}
-          <button className='clear btn' onClick={this.clearGame}>
+          <button
+            className='clear btn'
+            // onClick={this.clearGame}
+          >
             Clear
           </button>
           <div>Speed:</div>
