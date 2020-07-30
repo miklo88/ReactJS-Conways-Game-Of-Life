@@ -6,9 +6,9 @@ class Block extends React.Component {
     this.state = {};
   }
   render() {
-    return <div className='block-component'></div>;
+    return <div className='block-alive'>{this.state.deadAlive}</div>;
     // along the lines if props or state is true, then this styles, if false other style.
   }
 }
-
+// className='block-false'
 export default Block;

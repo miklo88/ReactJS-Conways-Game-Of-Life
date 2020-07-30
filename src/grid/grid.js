@@ -5,9 +5,15 @@ import Block from "../block/block";
 import "./grid.scss";
 // Grid Component
 class Grid extends React.Component {
-  constructor() {
-    super();
-    this.state = { display: "grid" };
+  constructor(props) {
+    super(props);
+    this.state = {
+      display: [],
+      deadAlive: "cell",
+      generation: 0,
+      // gameOn: false,
+    };
+    //
   }
   render() {
     // //changing grid state
@@ -15,12 +21,9 @@ class Grid extends React.Component {
       this.setState({ display: grid });
     }, 60000);
     //  grid creation logic
-    // let newArray = []
     let cols = 5;
     let rows = 5;
     let grid = initArray(cols, rows);
-    console.log("Grid Array");
-    console.table(grid);
     // grid creation function
     function initArray(cols, rows) {
       let carlsGrid = [];
@@ -35,23 +38,21 @@ class Grid extends React.Component {
       return carlsGrid;
     }
     console.log("intitArray func", initArray(cols, rows));
+    initArray(cols, rows);
     // being able to tell if a grid cell is dead or alive
     function deadAlive(grid) {
-      let dead = false;
-      let alive = true;
       for (let i = 0; i < grid.length; i++) {
         for (let j = 0; j < grid.length; j++) {
           // console.log(grid[i]);
           if (grid[i][j] === 1) {
             // console.log(alive);
-            return alive;
+            return 1;
           } else {
             // console.log(dead);
-            return dead;
+            return 0;
           }
         }
       }
-      // renaming the grid creation function
       let newArray = initArray(cols, rows);
       //looping through the grid
       for (let i = 0; i < cols; i++) {
@@ -59,21 +60,26 @@ class Grid extends React.Component {
           //renaming the myNeighbors function
           let amigos = myNeighbors(grid, i, j);
           //where the RULES OF LIFE ARE APPLIED
-          if (newArray[i][j] === dead && amigos === 3) {
-            return newArray[i][j] === alive;
-          } else if (newArray[i][j] === alive && (amigos < 2 || amigos > 3)) {
+          if (newArray[i][j] === 0 && amigos === 3) {
+            return newArray[i][j] === 1;
+          } else if (newArray[i][j] === 1 && (amigos < 2 || amigos > 3)) {
             return newArray[i][j];
           } else {
             return newArray[i][j];
           }
         }
       }
-      console.log("newArray", newArray);
-      return newArray === grid;
+
+      return (
+        <div className='new-array'>newArray</div> ===
+        <div className='grid'>grid</div>
+      );
     }
     // console.log(newArray);
     deadAlive(grid);
     console.log("deadAlive func", deadAlive(grid));
+    let cell = deadAlive(grid);
+    console.log(cell);
     // neighbors
     function myNeighbors(grid, x, y) {
       //loopin back through the array to find neighbors
@@ -102,6 +108,8 @@ class Grid extends React.Component {
     }
     myNeighbors(grid, 5, 5);
     console.log("myNeighbors func", myNeighbors(grid, 5, 5));
+    console.log("Grid Array");
+    console.table(grid);
     //component render
     return (
       <div className='grid-component'>
@@ -115,9 +123,13 @@ class Grid extends React.Component {
             Rows:
             <input type='text' className='input' />
           </label>
+          <div className='generation'>Generation: </div>
         </div>
         {/* GRID CONTAINER */}
         <div className='grid'>{this.state.display}</div>
+
+        <Block />
+        {/* <div className='cell'>{this.state.cell}</div> */}
         <div className='button-container'>
           {/* start */}
           <button
@@ -148,7 +160,7 @@ class Grid extends React.Component {
             Step
           </button>
         </div>
-        <Block />
+        {/* dont forget about the presets */}
       </div>
     );
   }

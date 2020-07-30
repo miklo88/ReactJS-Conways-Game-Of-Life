@@ -19,8 +19,7 @@ let rows = 5;
 let grid = initArray(cols, rows);
 console.log("Initial Table Below");
 console.table(grid);
-console.log(grid);
-// console.log(grid);
+
 // console.log("grid coord", grid[2][0]);
 // console.log("grid coord", grid[2][2]);
 
@@ -33,10 +32,8 @@ function initArray(cols, rows) {
   for (let i = 0; i < cols; i++) {
     // initiate/declare new sub array you have to assign another array within an array.
     carlsGrid[i] = [];
-    // console.log(carlsGrid[i]);
     // FOOD FOR THOUGHT - PLAY AROUND WITH NESTED OBJECTS IN ARRAYS
     // carlsGrid[i] = {};
-    // console.log("outer array", oneArray[i]);
     for (let j = 0; j < rows; j++) {
       carlsGrid[i][j] = Math.floor(Math.random() * 2);
       // carlsGrid[i][j] = onOff(grid);
@@ -74,7 +71,9 @@ function myNeighbors(grid, x, y) {
       // console.log("neighbors", neighbors);
       // console.log(neighbors[(0, 0)]);
       // console.log(neighbors[(1, 1)]);
-      // console.log(neighbors[(2, 2)]);
+      // console.log("coord", neighbors[(2, 2)]);
+      // console.log("coord", neighbors[(2, 4)]);
+      // console.log(grid[2][4]);
       // let newNeighbors = [];
       // console.log(neighbors[[0][0]]);
       console.log("grid[i][j]", grid[i][j]);
@@ -85,9 +84,8 @@ function myNeighbors(grid, x, y) {
 }
 // console.log(neighbors(0, 0));
 // console.log("grid", grid);
-myNeighbors(grid, 5, 5);
+// myNeighbors(grid, 5, 5);
 console.log("myNeighbors func", myNeighbors(grid, 5, 5));
-
 //toggling grid cells with either 1 or 0
 // console.log("0", grid[0][0]);
 // console.log("0", grid[0][1]);
@@ -105,9 +103,6 @@ console.log("grid[2][2]", grid[2][2]);
 // console.log("4", grid[4][3]);
 // console.log("4", grid[4][4]);
 
-// console.log(grid);
-// console.log("neighbors-log", neighbors);
-
 // being able to tell if a grid cell is dead or alive!
 function deadAlive(grid) {
   // let dead = false;
@@ -116,17 +111,12 @@ function deadAlive(grid) {
     for (let j = 0; j < grid.length; j++) {
       // console.log(grid[i]);
       if (grid[i][j] === 1) {
-        // console.log(alive);
         return 1;
       } else {
-        // console.log(dead);
         return 0;
       }
     }
   }
-  // what do i need for this function to compare the grids current state
-  // to the alive or dead variables
-  // renaming the grid creation function
   let newArray = initArray(cols, rows);
   //looping through the grid
   for (let i = 0; i < cols; i++) {
@@ -138,14 +128,13 @@ function deadAlive(grid) {
       if (state === 0 && amigos === 3) {
         return state === 1;
       } else if (state === 1 && (amigos < 2 || amigos > 3)) {
+        console.log(state);
         return state;
       } else {
-        console.log(state);
         return state[i][j];
       }
     }
   }
-  console.log("newArray", newArray);
   return (newArray = grid);
 }
 deadAlive(grid);
