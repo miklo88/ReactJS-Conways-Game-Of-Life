@@ -8,38 +8,24 @@ class Grid extends React.Component {
   //before component mounts deets
   constructor(props) {
     super(props);
-    //initial state
-    const cols = 10;
-    const rows = 10;
     const grid = [];
     //initial grid state
     this.state = {
-      columns: cols,
-      rows: rows,
       display: grid,
-      // deadAlive: cell,
       generation: 0,
-      // gameOn: false,
     };
     //this is just here reminding me that i'll be binding soon.
   }
   render() {
-    // //changing grid state
+    //changing grid state
     setTimeout(() => {
       this.setState({ display: grid });
-    }, 10000);
-    // function createArray(cols,rows) {
-    //   let arr = new Array(cols);
-    //   for (let i = 0; i < arr.length; i++) {
-    //     arr[i] = new Array(rows);
-    //   }
-    //   return arr;
-    // }
-    //  grid creation logic
+    }, 5000);
+
     let cols = 5;
     let rows = 5;
     //array for our grid
-    let grid = [];
+    let grid;
     //initial array creation
     function initArray() {
       let carlsGrid = [];
@@ -49,16 +35,16 @@ class Grid extends React.Component {
           carlsGrid[i][j] = Math.floor(Math.random() * 2);
         }
       }
-      return carlsGrid;
       // return carlsGrid.push(<Block cell={cell} display={grid} />);
-      // <Block cell={cell} />
+
+      return carlsGrid;
     }
     initArray();
-    console.log(initArray());
+    console.log("initArray", initArray());
     // being able to tell if a grid cell is dead or alive
     function deadAlive(grid) {
-      for (let i = 0; i < grid.length; i++) {
-        for (let j = 0; j < grid.length; j++) {
+      for (let i = 0; i < grid; i++) {
+        for (let j = 0; j < grid; j++) {
           if (grid[i][j] === 1) {
             return 1;
           } else {
@@ -82,13 +68,23 @@ class Grid extends React.Component {
           }
         }
       }
-      return newArray === grid;
+      newArray = grid;
     }
     deadAlive(grid);
     console.log("deadAlive func", deadAlive(grid));
     let cell = deadAlive(grid);
-    console.log("cell", cell);
-
+    // console.log("cell", cell);
+    //CELL DISPLAY PLAYAROUND
+    const lightUP = [];
+    function gridOfCells(cell) {
+      for (let i = 0; i < 5; i++) {
+        lightUP.push(cell);
+      }
+      return lightUP;
+    }
+    gridOfCells(cell);
+    console.log("cells", gridOfCells(cell));
+    //CELL DISPLAY PLAYAROUND
     // neighbors
     function myNeighbors() {
       //loopin back through the array to find neighbors
@@ -136,7 +132,8 @@ class Grid extends React.Component {
         <div className='grid'>{this.state.display}</div>
         {/*  Block aka square aka cell component */}
         <Block cell={cell} />
-
+        {/* grid isn't displaying the actual cells but i'm getting somewhere */}
+        <div>{lightUP}</div>
         <div className='button-container'>
           {/* start */}
           <button
