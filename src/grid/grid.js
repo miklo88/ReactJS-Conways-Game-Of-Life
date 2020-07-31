@@ -5,11 +5,15 @@ import Block from "../block/block";
 import "./grid.scss";
 // Grid Component
 class Grid extends React.Component {
+  //before component mounts deets
   constructor(props) {
     super(props);
+
     this.state = {
-      display: [],
-      deadAlive: "cell",
+      columns: "cols",
+      rows: "rows",
+      display: "grid",
+      // deadAlive: "cell",
       generation: 0,
       // gameOn: false,
     };
@@ -127,9 +131,9 @@ class Grid extends React.Component {
         </div>
         {/* GRID CONTAINER */}
         <div className='grid'>{this.state.display}</div>
+        {/*  Block aka square aka cell component */}
+        <Block cell={cell} />
 
-        <Block />
-        {/* <div className='cell'>{this.state.cell}</div> */}
         <div className='button-container'>
           {/* start */}
           <button
