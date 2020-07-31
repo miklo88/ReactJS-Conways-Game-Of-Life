@@ -8,29 +8,34 @@ class Grid extends React.Component {
   //before component mounts deets
   constructor(props) {
     super(props);
-
+    //initial state
+    const cols = 5;
+    const rows = 5;
+    const grid = [];
+    //initial grid state
+    //should check if each grid item here is true or false right off of the bat
     this.state = {
-      columns: "cols",
-      rows: "rows",
-      display: "grid",
-      // deadAlive: "cell",
+      columns: cols,
+      rows: rows,
+      display: grid,
+      // deadAlive: cell,
       generation: 0,
       // gameOn: false,
     };
-    //
+    //this is just here reminding me that i'll be binding soon.
   }
   render() {
     // //changing grid state
     setTimeout(() => {
       this.setState({ display: grid });
-    }, 60000);
+    }, 10000);
     //  grid creation logic
     let cols = 5;
     let rows = 5;
-    let grid = initArray(cols, rows);
-
+    //array for our grid
+    let grid = [];
     // grid creation function
-    function initArray(cols, rows) {
+    function initArray() {
       let carlsGrid = [];
       for (let i = 0; i < cols; i++) {
         //array declaration
@@ -41,29 +46,28 @@ class Grid extends React.Component {
         }
       }
       return carlsGrid;
+      // return carlsGrid.push(<Block cell={cell} display={grid} />);
+      // <Block cell={cell} />
     }
-    console.log("intitArray func", initArray(cols, rows));
-    initArray(cols, rows);
+    // console.log("intitArray func", initArray());
+    initArray();
     // being able to tell if a grid cell is dead or alive
     function deadAlive(grid) {
       for (let i = 0; i < grid.length; i++) {
         for (let j = 0; j < grid.length; j++) {
-          // console.log(grid[i]);
           if (grid[i][j] === 1) {
-            // console.log(alive);
             return 1;
           } else {
-            // console.log(dead);
             return 0;
           }
         }
       }
-      let newArray = initArray(cols, rows);
+      let newArray = initArray();
       //looping through the grid
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
-          //renaming the myNeighbors function
-          let amigos = myNeighbors(grid, i, j);
+          //renaming the myNeighbors function amigos
+          let amigos = myNeighbors();
           //where the RULES OF LIFE ARE APPLIED
           if (newArray[i][j] === 0 && amigos === 3) {
             return newArray[i][j] === 1;
@@ -74,22 +78,18 @@ class Grid extends React.Component {
           }
         }
       }
-
-      return (
-        <div className='new-array'>newArray</div> ===
-        <div className='grid'>grid</div>
-      );
+      return newArray === grid;
     }
-
     deadAlive(grid);
     console.log("deadAlive func", deadAlive(grid));
     let cell = deadAlive(grid);
-    console.log(cell);
+    console.log("cell", cell);
+
     // neighbors
-    function myNeighbors(grid, x, y) {
+    function myNeighbors() {
       //loopin back through the array to find neighbors
-      for (let i = 0; i < x; i++) {
-        for (let j = 0; j < y; j++) {
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
           // array elements surrouding current element.
           let neighbors = [
             // // above
@@ -111,15 +111,14 @@ class Grid extends React.Component {
         }
       }
     }
-    myNeighbors(grid, 5, 5);
-    console.log("myNeighbors func", myNeighbors(grid, 5, 5));
-    console.log("Grid Array");
-    console.table(grid);
+    myNeighbors();
+    console.log("myNeighbors func", myNeighbors());
+
     //component render
     return (
       <div className='grid-component'>
         {/* for future cols and rows adjusting */}
-        <div className='label-container'>
+        {/* <div className='label-container'>
           <label className='label'>
             Columns:
             <input type='text' className='input' />
@@ -128,8 +127,9 @@ class Grid extends React.Component {
             Rows:
             <input type='text' className='input' />
           </label>
-          <div className='generation'>Generation: </div>
-        </div>
+          </div> */}
+        <div className='generation'>Generation: </div>
+
         {/* GRID CONTAINER */}
         <div className='grid'>{this.state.display}</div>
         {/*  Block aka square aka cell component */}
