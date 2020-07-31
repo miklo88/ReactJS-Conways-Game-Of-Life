@@ -5,24 +5,37 @@ import Block from "../block/block";
 import "./grid.scss";
 // Grid Component
 class Grid extends React.Component {
-  constructor() {
-    super();
-    this.state = { display: "grid" };
+  //before component mounts deets
+  constructor(props) {
+    super(props);
+    //initial state
+    const cols = 5;
+    const rows = 5;
+    const grid = [];
+    //initial grid state
+    //should check if each grid item here is true or false right off of the bat
+    this.state = {
+      columns: cols,
+      rows: rows,
+      display: grid,
+      // deadAlive: cell,
+      generation: 0,
+      // gameOn: false,
+    };
+    //this is just here reminding me that i'll be binding soon.
   }
   render() {
     // //changing grid state
     setTimeout(() => {
       this.setState({ display: grid });
-    }, 60000);
+    }, 10000);
     //  grid creation logic
-    // let newArray = []
     let cols = 5;
     let rows = 5;
-    let grid = initArray(cols, rows);
-    console.log("Grid Array");
-    console.table(grid);
+    //array for our grid
+    let grid = [];
     // grid creation function
-    function initArray(cols, rows) {
+    function initArray() {
       let carlsGrid = [];
       for (let i = 0; i < cols; i++) {
         //array declaration
@@ -33,52 +46,50 @@ class Grid extends React.Component {
         }
       }
       return carlsGrid;
+      // return carlsGrid.push(<Block cell={cell} display={grid} />);
+      // <Block cell={cell} />
     }
-    console.log("intitArray func", initArray(cols, rows));
+    // console.log("intitArray func", initArray());
+    initArray();
     // being able to tell if a grid cell is dead or alive
     function deadAlive(grid) {
-      let dead = false;
-      let alive = true;
       for (let i = 0; i < grid.length; i++) {
         for (let j = 0; j < grid.length; j++) {
-          // console.log(grid[i]);
           if (grid[i][j] === 1) {
-            // console.log(alive);
-            return alive;
+            return 1;
           } else {
-            // console.log(dead);
-            return dead;
+            return 0;
           }
         }
       }
-      // renaming the grid creation function
-      let newArray = initArray(cols, rows);
+      let newArray = initArray();
       //looping through the grid
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
-          //renaming the myNeighbors function
-          let amigos = myNeighbors(grid, i, j);
+          //renaming the myNeighbors function amigos
+          let amigos = myNeighbors();
           //where the RULES OF LIFE ARE APPLIED
-          if (newArray[i][j] === dead && amigos === 3) {
-            return newArray[i][j] === alive;
-          } else if (newArray[i][j] === alive && (amigos < 2 || amigos > 3)) {
+          if (newArray[i][j] === 0 && amigos === 3) {
+            return newArray[i][j] === 1;
+          } else if (newArray[i][j] === 1 && (amigos < 2 || amigos > 3)) {
             return newArray[i][j];
           } else {
             return newArray[i][j];
           }
         }
       }
-      console.log("newArray", newArray);
       return newArray === grid;
     }
-    // console.log(newArray);
     deadAlive(grid);
     console.log("deadAlive func", deadAlive(grid));
+    let cell = deadAlive(grid);
+    console.log("cell", cell);
+
     // neighbors
-    function myNeighbors(grid, x, y) {
+    function myNeighbors() {
       //loopin back through the array to find neighbors
-      for (let i = 0; i < x; i++) {
-        for (let j = 0; j < y; j++) {
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
           // array elements surrouding current element.
           let neighbors = [
             // // above
@@ -100,24 +111,61 @@ class Grid extends React.Component {
         }
       }
     }
-    myNeighbors(grid, 5, 5);
-    console.log("myNeighbors func", myNeighbors(grid, 5, 5));
+    myNeighbors();
+    console.log("myNeighbors func", myNeighbors());
+
     //component render
     return (
       <div className='grid-component'>
+        {/* for future cols and rows adjusting */}
+        {/* <div className='label-container'>
+          <label className='label'>
+            Columns:
+            <input type='text' className='input' />
+          </label>
+          <label className='label'>
+            Rows:
+            <input type='text' className='input' />
+          </label>
+          </div> */}
+        <div className='generation'>Generation: </div>
+
+        {/* GRID CONTAINER */}
         <div className='grid'>{this.state.display}</div>
-        {/* start */}
-        <button
-        // value={this.props.value}
-        // onChange={this.handleChange.bind(this)}
-        >
-          Start
-        </button>
-        {/* stop */}
-        <button>Stop</button>
-        {/* clear */}
-        <button>Clear</button>
-        <Block />
+        {/*  Block aka square aka cell component */}
+        <Block cell={cell} />
+
+        <div className='button-container'>
+          {/* start */}
+          <button
+            className='btn start'
+            // value={this.props.value}
+            // onClick={this.handleChange.bind(this)}
+          >
+            Start
+          </button>
+          {/* stop */}
+          <button
+            className='btn stop'
+            // onClick={this.handlechange}
+          >
+            Stop
+          </button>
+          {/* clear */}
+          <button
+            className='btn clear'
+            //onClick={this.handleChange}
+          >
+            Clear
+          </button>
+          <button
+            className='btn step'
+            //onClick={this.handleChange}
+          >
+            Step
+          </button>
+        </div>
+        {/* dont forget about the presets */}
       </div>
     );
   }
