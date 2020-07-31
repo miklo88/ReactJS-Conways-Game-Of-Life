@@ -12,6 +12,17 @@ class Grid extends React.Component {
     const cols = 5;
     const rows = 5;
     const grid = [];
+
+    // const grid = function initArray() {
+    //   let carlsGrid = [];
+    //   for (let i = 0; i < cols; i++) {
+    //     carlsGrid[i] = [];
+    //     for (let j = 0; j < rows; j++) {
+    //       carlsGrid[i][j] = Math.floor(Math.random() * 2);
+    //     }
+    //   }
+    //   return carlsGrid;
+    // };
     //initial grid state
     //should check if each grid item here is true or false right off of the bat
     this.state = {
@@ -34,14 +45,12 @@ class Grid extends React.Component {
     let rows = 5;
     //array for our grid
     let grid = [];
-    // grid creation function
+    //initial array creation
     function initArray() {
       let carlsGrid = [];
       for (let i = 0; i < cols; i++) {
-        //array declaration
         carlsGrid[i] = [];
         for (let j = 0; j < rows; j++) {
-          //subarray declaration
           carlsGrid[i][j] = Math.floor(Math.random() * 2);
         }
       }
@@ -49,8 +58,8 @@ class Grid extends React.Component {
       // return carlsGrid.push(<Block cell={cell} display={grid} />);
       // <Block cell={cell} />
     }
-    // console.log("intitArray func", initArray());
     initArray();
+
     // being able to tell if a grid cell is dead or alive
     function deadAlive(grid) {
       for (let i = 0; i < grid.length; i++) {
