@@ -28,6 +28,7 @@ class Grid extends React.Component {
     let cols = 5;
     let rows = 5;
     let grid = initArray(cols, rows);
+
     // grid creation function
     function initArray(cols, rows) {
       let carlsGrid = [];
@@ -79,7 +80,7 @@ class Grid extends React.Component {
         <div className='grid'>grid</div>
       );
     }
-    // console.log(newArray);
+
     deadAlive(grid);
     console.log("deadAlive func", deadAlive(grid));
     let cell = deadAlive(grid);

@@ -7,12 +7,12 @@ class Block extends React.Component {
   }
   render() {
     console.log(this.props);
-    if (this.props.alive) {
+    if (this.props.cell) {
       return <div className='block-alive'></div>;
     } else {
       return <div className='block-dead'></div>;
     }
   }
 }
-// className='block-false'
+
 export default Block;
