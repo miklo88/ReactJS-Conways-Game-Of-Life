@@ -9,11 +9,10 @@ class Grid extends React.Component {
   constructor(props) {
     super(props);
     //initial state
-    const cols = 5;
-    const rows = 5;
+    const cols = 10;
+    const rows = 10;
     const grid = [];
     //initial grid state
-    //should check if each grid item here is true or false right off of the bat
     this.state = {
       columns: cols,
       rows: rows,
@@ -29,19 +28,24 @@ class Grid extends React.Component {
     setTimeout(() => {
       this.setState({ display: grid });
     }, 10000);
+    // function createArray(cols,rows) {
+    //   let arr = new Array(cols);
+    //   for (let i = 0; i < arr.length; i++) {
+    //     arr[i] = new Array(rows);
+    //   }
+    //   return arr;
+    // }
     //  grid creation logic
     let cols = 5;
     let rows = 5;
     //array for our grid
     let grid = [];
-    // grid creation function
+    //initial array creation
     function initArray() {
       let carlsGrid = [];
       for (let i = 0; i < cols; i++) {
-        //array declaration
         carlsGrid[i] = [];
         for (let j = 0; j < rows; j++) {
-          //subarray declaration
           carlsGrid[i][j] = Math.floor(Math.random() * 2);
         }
       }
@@ -49,8 +53,8 @@ class Grid extends React.Component {
       // return carlsGrid.push(<Block cell={cell} display={grid} />);
       // <Block cell={cell} />
     }
-    // console.log("intitArray func", initArray());
     initArray();
+    console.log(initArray());
     // being able to tell if a grid cell is dead or alive
     function deadAlive(grid) {
       for (let i = 0; i < grid.length; i++) {
@@ -113,7 +117,6 @@ class Grid extends React.Component {
     }
     myNeighbors();
     console.log("myNeighbors func", myNeighbors());
-
     //component render
     return (
       <div className='grid-component'>
@@ -129,7 +132,6 @@ class Grid extends React.Component {
           </label>
           </div> */}
         <div className='generation'>Generation: </div>
-
         {/* GRID CONTAINER */}
         <div className='grid'>{this.state.display}</div>
         {/*  Block aka square aka cell component */}
