@@ -16,6 +16,21 @@ class Grid extends React.Component {
     };
     //this is just here reminding me that i'll be binding soon.
   }
+  handleStart() {
+    console.log("start game");
+  }
+
+  handleStop() {
+    console.log("stop game");
+  }
+
+  handleClear() {
+    console.log("clear board");
+  }
+
+  handleIncrement() {
+    console.log("click thru generations");
+  }
   render() {
     //changing grid state
     setTimeout(() => {
