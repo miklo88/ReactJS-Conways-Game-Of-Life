@@ -13,6 +13,7 @@
     0 0 0 1 0
     0 1 0 0 1
 */
+
 // global variables
 let cols = 5;
 let rows = 5;
