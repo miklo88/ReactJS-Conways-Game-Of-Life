@@ -36,7 +36,6 @@ class Grid extends React.Component {
         }
       }
       // return carlsGrid.push(<Block cell={cell} display={grid} />);
-
       return carlsGrid;
     }
     initArray();
@@ -74,17 +73,17 @@ class Grid extends React.Component {
     console.log("deadAlive func", deadAlive(grid));
     let cell = deadAlive(grid);
     // console.log("cell", cell);
-    //CELL DISPLAY PLAYAROUND
+    //CELL DISPLAY
     const lightUP = [];
     function gridOfCells(cell) {
       for (let i = 0; i < 5; i++) {
-        lightUP.push(cell);
+        lightUP.push(<Block cell={cell} />);
       }
       return lightUP;
     }
     gridOfCells(cell);
     console.log("cells", gridOfCells(cell));
-    //CELL DISPLAY PLAYAROUND
+    //CELL DISPLAY
     // neighbors
     function myNeighbors() {
       //loopin back through the array to find neighbors
@@ -131,7 +130,7 @@ class Grid extends React.Component {
         {/* GRID CONTAINER */}
         <div className='grid'>{this.state.display}</div>
         {/*  Block aka square aka cell component */}
-        <Block cell={cell} />
+        {/* <Block cell={cell} /> */}
         {/* grid isn't displaying the actual cells but i'm getting somewhere */}
         <div>{lightUP}</div>
         <div className='button-container'>
@@ -139,28 +138,19 @@ class Grid extends React.Component {
           <button
             className='btn start'
             // value={this.props.value}
-            // onClick={this.handleChange.bind(this)}
+            onClick={this.handleChange}
           >
             Start
           </button>
           {/* stop */}
-          <button
-            className='btn stop'
-            // onClick={this.handlechange}
-          >
+          <button className='btn stop' onClick={this.handlechange}>
             Stop
           </button>
           {/* clear */}
-          <button
-            className='btn clear'
-            //onClick={this.handleChange}
-          >
+          <button className='btn clear' onClick={this.handleChange}>
             Clear
           </button>
-          <button
-            className='btn step'
-            //onClick={this.handleChange}
-          >
+          <button className='btn step' onClick={this.handleChange}>
             Step
           </button>
         </div>
