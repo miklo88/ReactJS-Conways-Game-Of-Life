@@ -13,29 +13,42 @@ class Grid extends React.Component {
     this.state = {
       display: grid,
       generation: 0,
+      startText: "Start",
+      stopText: "Stop",
+      clearText: "Clear",
+      stepText: "Increment",
     };
     //this is just here reminding me that i'll be binding soon.
   }
   handleStart() {
     console.log("start game");
+    let startText = this.state.startText === "Start";
+    this.setState({ startText: startText });
   }
 
   handleStop() {
     console.log("stop game");
+    let stopText = this.state.stopText === "Stop";
+    this.setState({ stopText: stopText });
   }
 
   handleClear() {
     console.log("clear board");
+    let clearText = this.state.clearText === "Clear";
+    this.setState({ clearText: clearText });
   }
 
   handleIncrement() {
     console.log("click thru generations");
+    let stepText = this.state.stepText === "Increment";
+    this.setState({ stepText: stepText });
   }
+
   render() {
     //changing grid state
-    setTimeout(() => {
-      this.setState({ display: grid });
-    }, 5000);
+    // setTimeout(() => {
+    //   this.setState({ display: grid });
+    // }, 5000);
 
     let cols = 5;
     let rows = 5;
@@ -155,18 +168,18 @@ class Grid extends React.Component {
             // value={this.props.value}
             onClick={this.handleChange}
           >
-            Start
+            {this.state.startText}
           </button>
           {/* stop */}
           <button className='btn stop' onClick={this.handlechange}>
-            Stop
+            {this.state.stopText}
           </button>
           {/* clear */}
           <button className='btn clear' onClick={this.handleChange}>
-            Clear
+            {this.state.clearText}
           </button>
           <button className='btn step' onClick={this.handleChange}>
-            Step
+            {this.state.stepText}
           </button>
         </div>
         {/* dont forget about the presets */}
