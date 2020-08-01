@@ -20,25 +20,29 @@ class Grid extends React.Component {
     };
     //this is just here reminding me that i'll be binding soon.
   }
-  handleStart() {
+  handleStart(e) {
+    e.preventDefault();
     console.log("start game");
     let startText = this.state.startText === "Start";
     this.setState({ startText: startText });
   }
 
-  handleStop() {
+  handleStop(e) {
+    e.preventDefault();
     console.log("stop game");
     let stopText = this.state.stopText === "Stop";
     this.setState({ stopText: stopText });
   }
 
-  handleClear() {
+  handleClear(e) {
+    e.preventDefault();
     console.log("clear board");
     let clearText = this.state.clearText === "Clear";
     this.setState({ clearText: clearText });
   }
 
-  handleIncrement() {
+  handleIncrement(e) {
+    e.preventDefault();
     console.log("click thru generations");
     let stepText = this.state.stepText === "Increment";
     this.setState({ stepText: stepText });
@@ -105,6 +109,7 @@ class Grid extends React.Component {
     const lightUP = [];
     function gridOfCells(cell) {
       for (let i = 0; i < 5; i++) {
+        //add key prop to the cell BLOCK
         lightUP.push(<Block cell={cell} />);
       }
       return lightUP;
@@ -166,19 +171,19 @@ class Grid extends React.Component {
           <button
             className='btn start'
             // value={this.props.value}
-            onClick={this.handleChange}
+            onClick={this.handleStart}
           >
             {this.state.startText}
           </button>
           {/* stop */}
-          <button className='btn stop' onClick={this.handlechange}>
+          <button className='btn stop' onClick={this.handleStop}>
             {this.state.stopText}
           </button>
           {/* clear */}
-          <button className='btn clear' onClick={this.handleChange}>
+          <button className='btn clear' onClick={this.handleClear}>
             {this.state.clearText}
           </button>
-          <button className='btn step' onClick={this.handleChange}>
+          <button className='btn step' onClick={this.handleIncrement}>
             {this.state.stepText}
           </button>
         </div>
