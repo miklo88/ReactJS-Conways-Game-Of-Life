@@ -19,40 +19,39 @@ class Grid extends React.Component {
       stepText: "Increment",
     };
     //this is just here reminding me that i'll be binding soon.
+    this.handleStart = this.handleStart.bind(this);
+    this.handleStop = this.handleStop.bind(this);
+    this.handleClear = this.handleClear.bind(this);
+    this.handleIncrement = this.handleIncrement.bind(this);
   }
-  handleStart(e) {
-    e.preventDefault();
+  handleStart() {
     console.log("start game");
     let startText = this.state.startText === "Start";
     this.setState({ startText: startText });
   }
 
-  handleStop(e) {
-    e.preventDefault();
+  handleStop() {
     console.log("stop game");
     let stopText = this.state.stopText === "Stop";
     this.setState({ stopText: stopText });
   }
 
-  handleClear(e) {
-    e.preventDefault();
+  handleClear() {
     console.log("clear board");
     let clearText = this.state.clearText === "Clear";
     this.setState({ clearText: clearText });
   }
 
-  handleIncrement(e) {
-    e.preventDefault();
+  handleIncrement() {
     console.log("click thru generations");
     let stepText = this.state.stepText === "Increment";
     this.setState({ stepText: stepText });
   }
-
   render() {
     //changing grid state
-    setTimeout(() => {
-      this.setState({ display: grid });
-    }, 5000);
+    // setTimeout(() => {
+    //   this.setState({ display: grid });
+    // }, 5000);
 
     let cols = 5;
     let rows = 5;
