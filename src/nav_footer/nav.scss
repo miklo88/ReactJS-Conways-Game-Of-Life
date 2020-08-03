@@ -1,0 +1,33 @@
+.nav-component {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f3f3f3;
+  padding: 20px;
+
+  .title {
+    margin: 10px;
+  }
+  .link-container {
+    .link {
+      color: black;
+      padding: 5px 15px;
+      text-decoration: none;
+      border: 0.5px solid black;
+      margin: 10px;
+      transition: 0.7s;
+    }
+    .link:hover {
+      background-color: #f3f3f3;
+      border: 0.5px solid lightcoral;
+      border-radius: 5px;
+      color: lightcoral;
+    }
+    .link:active {
+      background-color: lightcoral;
+      border: 0.5px solid #f3f3f3;
+      color: #f3f3f3;
+    }
+  }
+}

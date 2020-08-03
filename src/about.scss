@@ -1,0 +1,14 @@
+.about-component {
+  margin: 20px;
+  .about-title {
+    font-size: large;
+    text-decoration: underline;
+    margin-bottom: 20px;
+  }
+  .about-content {
+    margin: 25px;
+    .rule {
+      margin: 15px;
+    }
+  }
+}

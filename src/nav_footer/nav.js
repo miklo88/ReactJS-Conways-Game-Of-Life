@@ -1,16 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./nav.scss";
 
 class Nav extends React.Component {
   render() {
     return (
       <div className='nav-component'>
-        <Link className='homeward-link' to='/'>
-          Home
-        </Link>
-        <Link className='about-link' to='/about'>
-          About
-        </Link>
+        <h1 className='title'>Conways Game Of Life</h1>
+        <div className='link-container'>
+          <Link className='link home' to='/'>
+            Home
+          </Link>
+          <Link className='link about' to='/about'>
+            About
+          </Link>
+        </div>
       </div>
     );
   }

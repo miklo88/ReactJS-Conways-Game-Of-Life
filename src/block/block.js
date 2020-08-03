@@ -7,10 +7,19 @@ class Block extends React.Component {
   }
   render() {
     console.log("from block component", this.props);
+
     if (this.props.cell) {
-      return <div className='block-alive'></div>;
+      return (
+        <div className='cell-container'>
+          <div className='block-alive'></div>
+        </div>
+      );
     } else {
-      return <div className='block-dead'></div>;
+      return (
+        <div className='cell-container'>
+          <div className='block-dead'></div>
+        </div>
+      );
     }
   }
 }

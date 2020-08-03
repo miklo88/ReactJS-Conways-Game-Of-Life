@@ -19,40 +19,39 @@ class Grid extends React.Component {
       stepText: "Increment",
     };
     //this is just here reminding me that i'll be binding soon.
+    this.handleStart = this.handleStart.bind(this);
+    this.handleStop = this.handleStop.bind(this);
+    this.handleClear = this.handleClear.bind(this);
+    this.handleIncrement = this.handleIncrement.bind(this);
   }
-  handleStart(e) {
-    e.preventDefault();
+  handleStart() {
     console.log("start game");
     let startText = this.state.startText === "Start";
     this.setState({ startText: startText });
   }
 
-  handleStop(e) {
-    e.preventDefault();
+  handleStop() {
     console.log("stop game");
     let stopText = this.state.stopText === "Stop";
     this.setState({ stopText: stopText });
   }
 
-  handleClear(e) {
-    e.preventDefault();
+  handleClear() {
     console.log("clear board");
     let clearText = this.state.clearText === "Clear";
     this.setState({ clearText: clearText });
   }
 
-  handleIncrement(e) {
-    e.preventDefault();
+  handleIncrement() {
     console.log("click thru generations");
     let stepText = this.state.stepText === "Increment";
     this.setState({ stepText: stepText });
   }
-
   render() {
     //changing grid state
-    setTimeout(() => {
-      this.setState({ display: grid });
-    }, 5000);
+    // setTimeout(() => {
+    //   this.setState({ display: grid });
+    // }, 5000);
 
     let cols = 5;
     let rows = 5;
@@ -149,7 +148,7 @@ class Grid extends React.Component {
     return (
       <div className='grid-component'>
         {/* for future cols and rows adjusting */}
-        {/* <div className='label-container'>
+        <div className='label-container'>
           <label className='label'>
             Columns:
             <input type='text' className='input' />
@@ -158,8 +157,8 @@ class Grid extends React.Component {
             Rows:
             <input type='text' className='input' />
           </label>
-          </div> */}
-        <div className='generation'>Generation: </div>
+          <div className='generation'>Generation: </div>
+        </div>
         {/* GRID CONTAINER */}
         <div className='grid'>{this.state.display}</div>
         {/*  Block aka square aka cell component */}
