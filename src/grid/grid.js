@@ -151,11 +151,11 @@ class Grid extends React.Component {
         <div className='label-container'>
           <label className='label'>
             Columns:
-            <input type='text' className='input' />
+            <input type='text' className='input' placeholder='not working :(' />
           </label>
           <label className='label'>
             Rows:
-            <input type='text' className='input' />
+            <input type='text' className='input' placeholder='not working :(' />
           </label>
           <div className='generation'>Generation: </div>
         </div>
