@@ -1,25 +1,34 @@
 import React from "react";
+import "./about.scss";
 
 class About extends React.Component {
   render() {
     return (
       <div className='about-component'>
-        <h1 className='aboout-title'>About Conways Game of Life</h1>
+        <h1 className='about-title'>About Conways Game of Life</h1>
 
         <p className='about-content'>
-          Rules to Conways Game of Life 1. Any live cell with fewer than two
-          live neighbors dies, as if caused by under-population. 2. Any live
-          cell with two or three live neighbors lives on to the next generation.
-          3. Any live cell with more than three live neighbors dies, as if by
-          over-population. 4. Any dead cell with exactly three live neighbors
-          becomes a live cell, as if by reproduction.
+          Rules to Conways Game of Life
+          <p className='rule'>
+            1. Any live cell with fewer than two live neighbors dies, as if
+            caused by under-population.
+          </p>
+          <p className='rule'>
+            2. Any live cell with two or three live neighbors lives on to the
+            next generation.
+          </p>
+          <p className='rule'>
+            3. Any live cell with more than three live neighbors dies, as if by
+            over-population. 4. Any dead cell with exactly three live neighbors
+            becomes a live cell, as if by reproduction.
+          </p>
         </p>
 
         <p className='about-content'>
-          -Cellular Automata: Otherwise known as CA. Also called cellular
-          spaces, tessellation automata, homoegeneous structures, cellular
-          structures, tessellation structures, and iterative arrays. CA has
-          found application in various areas, including physics, theoretical
+          <em>-Cellular Automata:</em> Otherwise known as CA. Also called
+          cellular spaces, tessellation automata, homoegeneous structures,
+          cellular structures, tessellation structures, and iterative arrays. CA
+          has found application in various areas, including physics, theoretical
           biology and microstructure modeling. A cellular automaton consists of
           a regular grid of cells. Each in one of a finite number of states,
           such as on and off. The grid can be in any finite number of
