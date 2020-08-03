@@ -148,7 +148,7 @@ class Grid extends React.Component {
     return (
       <div className='grid-component'>
         {/* for future cols and rows adjusting */}
-        {/* <div className='label-container'>
+        <div className='label-container'>
           <label className='label'>
             Columns:
             <input type='text' className='input' />
@@ -157,8 +157,8 @@ class Grid extends React.Component {
             Rows:
             <input type='text' className='input' />
           </label>
-          </div> */}
-        <div className='generation'>Generation: </div>
+          <div className='generation'>Generation: </div>
+        </div>
         {/* GRID CONTAINER */}
         <div className='grid'>{this.state.display}</div>
         {/*  Block aka square aka cell component */}

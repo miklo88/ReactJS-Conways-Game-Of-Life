@@ -1,9 +1,23 @@
 .grid-component {
   margin: 0 auto;
+  .generation {
+    padding: 10px;
+  }
+  .label-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 10px;
+    .label {
+      margin: 10px;
+    }
+  }
   .grid {
     display: block;
     color: black;
     border: 0.5px solid black;
+    margin: 20px;
   }
   .button-container {
     display: flex;
@@ -12,8 +26,7 @@
     align-items: center;
     background-color: #f3f3f3;
     padding: 10px;
-    // width: 70%;
-    margin: 0 auto;
+    margin-top: 20px;
     .btn {
       border: 1px solid black;
       padding: 5px 15px;
