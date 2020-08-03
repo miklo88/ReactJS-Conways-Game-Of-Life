@@ -5,18 +5,12 @@
     color: black;
     border: 0.5px solid black;
   }
-
-  .cell {
-    border: 0.5px solid red;
-    margin: 10px;
-    padding: 10px;
-  }
   .button-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #f1f1f1;
+    background-color: #f3f3f3;
     padding: 10px;
     // width: 70%;
     margin: 0 auto;
@@ -28,10 +22,10 @@
     }
     .btn:hover {
       background-color: #f3f3f3;
-      color: #f33;
+      color: lightcoral;
     }
     .btn:active {
-      background-color: #f33;
+      background-color: lightcoral;
       color: #f3f3f3;
     }
   }
