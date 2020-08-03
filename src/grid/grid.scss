@@ -19,13 +19,17 @@
       padding: 5px 15px;
       margin: 5px;
       cursor: pointer;
+      transition: 0.7s;
     }
     .btn:hover {
       background-color: #f3f3f3;
+      border: 0.5px solid lightcoral;
+      border-radius: 5px;
       color: lightcoral;
     }
     .btn:active {
       background-color: lightcoral;
+      border: 0.5px solid #f3f3f3;
       color: #f3f3f3;
     }
   }
