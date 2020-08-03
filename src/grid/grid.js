@@ -50,9 +50,9 @@ class Grid extends React.Component {
 
   render() {
     //changing grid state
-    // setTimeout(() => {
-    //   this.setState({ display: grid });
-    // }, 5000);
+    setTimeout(() => {
+      this.setState({ display: grid });
+    }, 5000);
 
     let cols = 5;
     let rows = 5;
