@@ -8,7 +8,33 @@ class Grid extends React.Component {
     this.state = {};
   }
   render() {
-    return <div className='grid-component'></div>;
+    return (
+      <div className='grid-component'>
+        {/* container for inputs and input title */}
+        <div className='input-container'>
+          {/* inputs to adjust grid size */}
+          <label className='input-label'>
+            Columns:
+            <input className='input' type='text' placeholder='Columns' />
+          </label>
+          <label className='input-label'>
+            Rows:
+            <input className='input' type='text' placeholder='Rows' />
+          </label>
+        </div>
+        <div className='button-container'>
+          {/* going to have to have these manipulate the state and the array. */}
+          <button className='btn start'>Start</button>
+          <button className='btn stop'>Stop</button>
+          <button className='btn clear'>Clear</button>
+          <button className='btn increment'>Increment</button>
+        </div>
+        {/* how many generations have occured. */}
+        <div className='generation-container'>
+          <p className='generations'>Generations:</p>
+        </div>
+      </div>
+    );
   }
 }
 export default Grid;

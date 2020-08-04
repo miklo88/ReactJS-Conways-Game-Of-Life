@@ -1,24 +1,25 @@
 .grid-component {
   margin: 0 auto;
-  .generation {
-    padding: 10px;
-  }
-  .label-container {
+  // input container
+  .input-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     margin: 10px;
-    .label {
+    // input labels and inputs
+    .input-label {
       margin: 10px;
     }
   }
+  // grid display - life board
   .grid {
     display: block;
     color: black;
     border: 0.5px solid black;
     margin: 20px;
   }
+  // buttons container
   .button-container {
     display: flex;
     flex-direction: row;
@@ -27,12 +28,13 @@
     background-color: #f3f3f3;
     padding: 10px;
     margin-top: 20px;
+    // each button with UI
     .btn {
       border: 1px solid black;
       padding: 5px 15px;
       margin: 5px;
       cursor: pointer;
-      transition: 0.7s;
+      transition: 0.2s;
     }
     .btn:hover {
       background-color: #f3f3f3;
@@ -45,5 +47,8 @@
       border: 0.5px solid #f3f3f3;
       color: #f3f3f3;
     }
+  }
+  .generation-container {
+    margin: 20px;
   }
 }
