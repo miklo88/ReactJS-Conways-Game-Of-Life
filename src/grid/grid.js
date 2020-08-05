@@ -7,13 +7,16 @@ class Grid extends React.Component {
     //initial state for cols and rows. aka width and height
     // //width
     let cols = [];
-    // //height
+    // // //height
     let rows = [];
+    // // //initalGrid
+    let initialGrid = [];
     super();
     //the state
     this.state = {
       width: cols,
       height: rows,
+      display: initialGrid,
     };
     //binding the onChange from the inputs
     this.columnChange = this.columnChange.bind(this);
@@ -34,14 +37,18 @@ class Grid extends React.Component {
       height: e.target.value,
     });
   }
-  handlesubmit(e) {
+  gridsubmit(e) {
     this.setState(this.state.value);
     e.preventDefault();
   }
+
   render() {
+    // setTimeout(() => {
+    //   this.setState({ display: "initalGrid" });
+    // }, 5000);
     // cols and rows i want to create for this grid. to give it width and height
-    let cols = []; // reading the length of these for da loop
-    let rows = []; // reading the length of these for da loop
+    let cols = 5; // reading the length of these for da loop
+    let rows = 5; // reading the length of these for da loop
     //creating a 2d array grid to display on reactjs.
     // i want to pass a width and height aka columns and rows to this grid
     function createGrid(cols, rows) {
@@ -49,21 +56,22 @@ class Grid extends React.Component {
       let initialGrid = [];
       //cols.length and it goes bananas for some reason
       for (let i = 0; i < cols; i++) {
-        console.log("this i columns", i);
+        initialGrid[i] = [];
         //cols.length and it goes bananas for some reason
         for (let j = 0; j < rows; j++) {
-          console.log("this j rows", j);
+          initialGrid[i][j] = [];
+          // console.log("this j rows", j);
         }
       }
       return initialGrid;
     }
     createGrid(cols, rows);
-    console.log(createGrid(cols, rows));
+    console.log("create grid", createGrid(cols, rows));
 
     return (
       <div className='grid-component'>
         {/* container for inputs and input title */}
-        <form className='input-container' handlesubmit={this.handleSubmit}>
+        <form className='input-container' gridsubmit={this.handleSubmit}>
           {/* inputs to adjust grid size */}
           <label className='input-label'>
             Columns:
@@ -89,6 +97,9 @@ class Grid extends React.Component {
             </label>
           </label>
         </form>
+        <div className='grid-container'>
+          <div className='grid'>{createGrid(cols, rows)}</div>
+        </div>
         <div className='button-container'>
           {/* going to have to have these manipulate the state and the array. */}
           <button className='btn start'>Start</button>
