@@ -36,15 +36,17 @@ class Grid extends React.Component {
     });
   }
   rowChange(e) {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     e.preventDefault();
     this.setState({
       rows: e.target.value,
     });
   }
+  //submit cols and rows
   gridSubmit(e) {
-    this.setState(this.state.value);
     e.preventDefault();
+    this.setState(this.state.value);
+    console.log("submit form button", this.state);
   }
 
   render() {
@@ -76,11 +78,7 @@ class Grid extends React.Component {
     return (
       <div className='grid-component'>
         {/* container for inputs and input title */}
-        <form
-          className='input-container'
-          value='Submit'
-          onSubmit={this.gridSubmit}
-        >
+        <form className='input-container'>
           {/* inputs to adjust grid size */}
           <label className='input-label'>
             Columns:
@@ -89,8 +87,7 @@ class Grid extends React.Component {
               name='width'
               type='number'
               value={this.state.cols}
-              onChange={this.columnChange}
-              // onChange={(e) => this.setState({ cols: e.target.value })}
+              onChange={(e) => this.columnChange(e)}
               placeholder='Columns'
             />
           </label>
@@ -101,11 +98,18 @@ class Grid extends React.Component {
               name='height'
               type='number'
               value={this.state.rows}
-              onChange={this.rowChange}
+              onChange={(e) => this.rowChange(e)}
               placeholder='Rows'
             />
             <label className='input-label'>
-              <input type='submit' value='submit' />
+              <button
+                className='btn start'
+                type='submit'
+                value='submit'
+                onClick={(e) => this.gridSubmit(e)}
+              >
+                Submit
+              </button>
             </label>
           </label>
         </form>
