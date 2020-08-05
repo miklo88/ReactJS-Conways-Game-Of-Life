@@ -1,195 +1,154 @@
 import React from "react";
-// block component
-import Block from "../block/block";
-// styles
 import "./grid.scss";
-// Grid Component
+
 class Grid extends React.Component {
-  //before component mounts deets
-  constructor(props) {
-    super(props);
-    const grid = [];
-    //initial grid state
+  // getting state ready because I will need it.
+  constructor() {
+    //initial state for cols and rows. aka width and height
+    // //width
+    let cols = [];
+    // // //height
+    let rows = [];
+    // // //initalGrid
+    let initialGrid = [];
+    super();
+    //the state
     this.state = {
-      display: grid,
-      generation: 0,
-      startText: "Start",
-      stopText: "Stop",
-      clearText: "Clear",
-      stepText: "Increment",
+      width: cols,
+      height: rows,
+      display: initialGrid,
     };
-    //this is just here reminding me that i'll be binding soon.
-    this.handleStart = this.handleStart.bind(this);
-    this.handleStop = this.handleStop.bind(this);
-    this.handleClear = this.handleClear.bind(this);
-    this.handleIncrement = this.handleIncrement.bind(this);
+    //binding the onChange from the inputs
+    this.columnChange = this.columnChange.bind(this);
+    this.rowChange = this.rowChange.bind(this);
+    // what needs to be updated in my state?
+    // the generations of how many times this function runs aka {count}
+    // the grid needs to be updated. when user clicks, when function invoked and running.
+    //the grid needs to be set to state then compared to the new state incoming.
+    // since i have my columns and rows, those can be stored to help create my grid.
   }
-  handleStart() {
-    console.log("start game");
-    let startText = this.state.startText === "Start";
-    this.setState({ startText: startText });
+  //handleSubmits
+  columnChange(e) {
+    console.log(e.target.value);
+    e.preventDefault();
+    this.setState({
+      width: e.target.value,
+    });
+  }
+  rowChange(e) {
+    console.log(e.target.value);
+    e.preventDefault();
+    this.setState({
+      height: e.target.value,
+    });
+  }
+  gridSubmit(e) {
+    this.setState(this.state.value);
+    e.preventDefault();
   }
 
-  handleStop() {
-    console.log("stop game");
-    let stopText = this.state.stopText === "Stop";
-    this.setState({ stopText: stopText });
-  }
-
-  handleClear() {
-    console.log("clear board");
-    let clearText = this.state.clearText === "Clear";
-    this.setState({ clearText: clearText });
-  }
-
-  handleIncrement() {
-    console.log("click thru generations");
-    let stepText = this.state.stepText === "Increment";
-    this.setState({ stepText: stepText });
-  }
   render() {
-    //changing grid state
     // setTimeout(() => {
-    //   this.setState({ display: grid });
+    //   this.setState({ display: "initalGrid" });
     // }, 5000);
+    // cols and rows i want to create for this grid. to give it width and height
+    let cols; // reading the length of these for da loop
+    let rows; // reading the length of these for da loop
+    //creating a 2d array grid to display on reactjs.
+    // i want to pass a width and height aka columns and rows to this grid
+    function createGrid(cols, rows) {
+      //array i want to push info to.
+      let initialGrid = [];
+      //cols.length and it goes bananas for some reason
+      for (let i = 0; i < cols; i++) {
+        initialGrid[i] = [];
+        //cols.length and it goes bananas for some reason
+        for (let j = 0; j < rows; j++) {
+          initialGrid[i][j] = [];
+          // console.log("this j rows", j);
+        }
+      }
+      return initialGrid;
+    }
+    createGrid(cols, rows);
+    console.log("create grid", createGrid(cols, rows));
 
-    let cols = 5;
-    let rows = 5;
-    //array for our grid
-    let grid;
-    //initial array creation
-    function initArray() {
-      let carlsGrid = [];
-      for (let i = 0; i < cols; i++) {
-        carlsGrid[i] = [];
-        for (let j = 0; j < rows; j++) {
-          carlsGrid[i][j] = Math.floor(Math.random() * 2);
-        }
-      }
-      // return carlsGrid.push(<Block cell={cell} display={grid} />);
-      return carlsGrid;
-    }
-    initArray();
-    console.log("initArray", initArray());
-    // being able to tell if a grid cell is dead or alive
-    function deadAlive(grid) {
-      for (let i = 0; i < grid; i++) {
-        for (let j = 0; j < grid; j++) {
-          if (grid[i][j] === 1) {
-            return 1;
-          } else {
-            return 0;
-          }
-        }
-      }
-      let newArray = initArray();
-      //looping through the grid
-      for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-          //renaming the myNeighbors function amigos
-          let amigos = myNeighbors();
-          //where the RULES OF LIFE ARE APPLIED
-          if (newArray[i][j] === 0 && amigos === 3) {
-            return newArray[i][j] === 1;
-          } else if (newArray[i][j] === 1 && (amigos < 2 || amigos > 3)) {
-            return newArray[i][j];
-          } else {
-            return newArray[i][j];
-          }
-        }
-      }
-      newArray = grid;
-    }
-    deadAlive(grid);
-    console.log("deadAlive func", deadAlive(grid));
-    let cell = deadAlive(grid);
-    // console.log("cell", cell);
-    //CELL DISPLAY
-    const lightUP = [];
-    function gridOfCells(cell) {
-      for (let i = 0; i < 5; i++) {
-        //add key prop to the cell BLOCK
-        lightUP.push(<Block cell={cell} />);
-      }
-      return lightUP;
-    }
-    gridOfCells(cell);
-    console.log("cells", gridOfCells(cell));
-    //CELL DISPLAY
-    // neighbors
-    function myNeighbors() {
-      //loopin back through the array to find neighbors
-      for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-          // array elements surrouding current element.
-          let neighbors = [
-            // // above
-            [i - 1, j - 1],
-            [i, j - 1],
-            [i + 1, j - 1],
-            // // left side
-            [i - 1, j],
-            // // middle
-            // [i, j],
-            //right side
-            [i + 1, j],
-            // // below
-            [i - 1, j + 1],
-            [i, j + 1],
-            [i + 1, j + 1],
-          ];
-          return neighbors;
-        }
-      }
-    }
-    myNeighbors();
-    console.log("myNeighbors func", myNeighbors());
-    //component render
     return (
       <div className='grid-component'>
-        {/* for future cols and rows adjusting */}
-        <div className='label-container'>
-          <label className='label'>
+        {/* container for inputs and input title */}
+        <form
+          className='input-container'
+          value='Submit'
+          onSubmit={this.gridSubmit}
+        >
+          {/* inputs to adjust grid size */}
+          <label className='input-label'>
             Columns:
-            <input type='text' className='input' />
+            <input
+              className='input'
+              name='width'
+              type='number'
+              value={this.state.width}
+              onChange={this.columnChange}
+              placeholder='Columns'
+            />
           </label>
-          <label className='label'>
+          <label className='input-label'>
             Rows:
-            <input type='text' className='input' />
+            <input
+              className='input'
+              name='height'
+              type='number'
+              value={this.state.height}
+              onChange={this.rowChange}
+              placeholder='Rows'
+            />
+            <label className='input-label'>
+              <input type='submit' value='Submit' />
+            </label>
           </label>
-          <div className='generation'>Generation: </div>
-        </div>
-        {/* GRID CONTAINER */}
-        <div className='grid'>{this.state.display}</div>
-        {/*  Block aka square aka cell component */}
-        {/* <Block cell={cell} /> */}
-        {/* grid isn't displaying the actual cells but i'm getting somewhere */}
-        <div>{lightUP}</div>
-        <div className='button-container'>
-          {/* start */}
-          <button
-            className='btn start'
-            // value={this.props.value}
-            onClick={this.handleStart}
+        </form>
+        <div className='grid-container'>
+          <div
+            className='grid'
+            //bust out a grid aqui? props?
+            // style={{
+            //   width: "50px",
+            //   height: "50px",
+            //   backgroundColor: "lightgray",
+            // }}
           >
-            {this.state.startText}
-          </button>
-          {/* stop */}
-          <button className='btn stop' onClick={this.handleStop}>
-            {this.state.stopText}
-          </button>
-          {/* clear */}
-          <button className='btn clear' onClick={this.handleClear}>
-            {this.state.clearText}
-          </button>
-          <button className='btn step' onClick={this.handleIncrement}>
-            {this.state.stepText}
-          </button>
+            {createGrid(cols, rows)}
+          </div>
         </div>
-        {/* dont forget about the presets */}
+        <div className='button-container'>
+          {/* going to have to have these manipulate the state and the array. */}
+          <button className='btn start'>Start</button>
+          <button className='btn stop'>Stop</button>
+          <button className='btn clear'>Clear</button>
+          <button className='btn increment'>Increment</button>
+        </div>
+        {/* how many generations have occured. */}
+        <div className='generation-container'>
+          <p className='generations'>Generations:</p>
+        </div>
       </div>
     );
   }
 }
-
 export default Grid;
+
+// UPER //
+// What do i need to do brainstorm
+
+// A)im going to need to create a nested array and display that array.
+// that array is going to have to be stored to state. displayed. updated.
+// its going to have to be compatable with a user inputing a height and width. or rows and columns to it
+// has to be able to be updated by generating random seeds, the user clicking the grid, clicking already pre-seeded data to populate the grid.
+// and be able to increment each generation or function one by one.
+//
+//B) logic has to be written for the grid to play the rules of the game of life
+// when this function is invoked it has to play the game out until no cells are alive or a stagnant map has been created.
+// - how will i write this function and why
+// - what else will i need to make this function work correctly?
+// - how will i implement it?
