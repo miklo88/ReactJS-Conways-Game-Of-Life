@@ -5,18 +5,13 @@ class Grid extends React.Component {
   // getting state ready because I will need it.
   constructor() {
     //initial state for cols and rows. aka width and height
-    // //width
-    // let cols = [];
-    // // //height
-    // let rows = [];
-    // // //initalGrid
-    // let initialGrid =  [];
     super();
     //the state
     this.state = {
       cols: "",
       rows: "",
-      // display: initialGrid,
+      //grid time
+      grid: [],
     };
     //binding the onChange from the inputs
     this.columnChange = this.columnChange.bind(this);
@@ -25,7 +20,6 @@ class Grid extends React.Component {
     // the generations of how many times this function runs aka {count}
     // the grid needs to be updated. when user clicks, when function invoked and running.
     //the grid needs to be set to state then compared to the new state incoming.
-    // since i have my columns and rows, those can be stored to help create my grid.
   }
   //handleSubmits
   columnChange(e) {
@@ -47,6 +41,11 @@ class Grid extends React.Component {
     e.preventDefault();
     this.setState(this.state.value);
     console.log("submit form button", this.state);
+    //clearning out the form input fields after submit.
+    this.setState({
+      cols: "",
+      rows: "",
+    });
   }
 
   render() {
@@ -54,8 +53,8 @@ class Grid extends React.Component {
     //   this.setState({ display: "initalGrid" });
     // }, 5000);
     // cols and rows i want to create for this grid. to give it width and height
-    let cols; // reading the length of these for da loop
-    let rows; // reading the length of these for da loop
+    // let cols; // reading the length of these for da loop
+    // let rows; // reading the length of these for da loop
     //creating a 2d array grid to display on reactjs.
     // i want to pass a width and height aka columns and rows to this grid
     function createGrid(cols, rows) {
@@ -72,8 +71,8 @@ class Grid extends React.Component {
       }
       return initialGrid;
     }
-    createGrid(cols, rows);
-    console.log("create grid", createGrid(cols, rows));
+    createGrid(this.state.cols, this.state.rows);
+    console.log("create grid", createGrid(this.state.cols, this.state.rows));
 
     return (
       <div className='grid-component'>
@@ -123,12 +122,19 @@ class Grid extends React.Component {
             //   backgroundColor: "lightgray",
             // }}
           >
-            {createGrid(cols, rows)}
+            {/* {createGrid(cols, rows)} */}
           </div>
         </div>
         <div className='button-container'>
           {/* going to have to have these manipulate the state and the array. */}
-          <button className='btn start'>Start</button>
+          {/* going to invoke the function here to create a grid. */}
+          <button
+            className='btn start'
+            value={this.state.grid}
+            onClick={(e) => this.startGame(e)}
+          >
+            Start
+          </button>
           <button className='btn stop'>Stop</button>
           <button className='btn clear'>Clear</button>
           <button className='btn increment'>Increment</button>
