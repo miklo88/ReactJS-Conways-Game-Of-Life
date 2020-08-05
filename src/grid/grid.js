@@ -21,25 +21,27 @@ class Grid extends React.Component {
     //the grid needs to be set to state then compared to the new state incoming.
     // since i have my columns and rows, those can be stored to help create my grid.
   }
-
   render() {
     // cols and rows i want to create for this grid. to give it width and height
     let cols = []; // reading the length of these for da loop
     let rows = []; // reading the length of these for da loop
     //creating a 2d array grid to display on reactjs.
     // i want to pass a width and height aka columns and rows to this grid
-    function createGrid(num) {
+    function createGrid(cols, rows) {
       let initialGrid = [];
-      for (let i = 0; i < num; i++) {
+      for (let i = 0; i < cols; i++) {
+        // initialGrid.push(cols.length[i]);
         console.log("this i columns", i);
-        for (let j = 0; j < num; j++) {
+        for (let j = 0; j < rows; j++) {
+          // initialGrid.push(rows.length[j]);
           console.log("this j rows", j);
         }
       }
       return initialGrid;
     }
-    console.log(createGrid(3));
-    createGrid(3);
+    createGrid(cols, rows);
+    console.log(createGrid(cols, rows));
+
     return (
       <div className='grid-component'>
         {/* container for inputs and input title */}
