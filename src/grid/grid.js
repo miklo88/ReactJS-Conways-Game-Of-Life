@@ -5,21 +5,38 @@ class Grid extends React.Component {
   // getting state ready because I will need it.
   constructor() {
     //initial state for cols and rows. aka width and height
-    //width
-    let cols = [];
-    //height
-    let rows = [];
+    // //width
+    // let cols = [];
+    // //height
+    // let rows = [];
     super();
     //the state
     this.state = {
-      width: cols,
-      height: rows,
+      width: [],
+      height: [],
     };
+    //binding the onChange from the inputs
+    this.columnChange = this.columnChange.bind(this);
+    this.rowChange = this.rowChange.bind(this);
     // what needs to be updated in my state?
     // the generations of how many times this function runs aka {count}
     // the grid needs to be updated. when user clicks, when function invoked and running.
     //the grid needs to be set to state then compared to the new state incoming.
     // since i have my columns and rows, those can be stored to help create my grid.
+  }
+  columnChange(e) {
+    this.setState({
+      width: e.target.value,
+    });
+  }
+  rowChange(e) {
+    this.setState({
+      height: e.target.value,
+    });
+  }
+  handlesubmit(e) {
+    console.log("handlesubmit", this.state.value);
+    e.preventDefault();
   }
   render() {
     // cols and rows i want to create for this grid. to give it width and height
@@ -28,12 +45,13 @@ class Grid extends React.Component {
     //creating a 2d array grid to display on reactjs.
     // i want to pass a width and height aka columns and rows to this grid
     function createGrid(cols, rows) {
+      //array i want to push info to.
       let initialGrid = [];
+      //cols.length and it goes bananas for some reason
       for (let i = 0; i < cols; i++) {
-        // initialGrid.push(cols.length[i]);
         console.log("this i columns", i);
+        //cols.length and it goes bananas for some reason
         for (let j = 0; j < rows; j++) {
-          // initialGrid.push(rows.length[j]);
           console.log("this j rows", j);
         }
       }
@@ -45,17 +63,32 @@ class Grid extends React.Component {
     return (
       <div className='grid-component'>
         {/* container for inputs and input title */}
-        <div className='input-container'>
+        <form className='input-container' handlesubmit={this.handleSubmit}>
           {/* inputs to adjust grid size */}
           <label className='input-label'>
             Columns:
-            <input className='input' type='text' placeholder='Columns' />
+            <input
+              className='input'
+              type='text'
+              value={this.state.width}
+              onChange={this.columnChange}
+              placeholder='Columns'
+            />
           </label>
           <label className='input-label'>
             Rows:
-            <input className='input' type='text' placeholder='Rows' />
+            <input
+              className='input'
+              type='text'
+              value={this.state.height}
+              onChange={this.rowChange}
+              placeholder='Rows'
+            />
+            <label className='input-label'>
+              <input type='submit' value='Submit' />
+            </label>
           </label>
-        </div>
+        </form>
         <div className='button-container'>
           {/* going to have to have these manipulate the state and the array. */}
           <button className='btn start'>Start</button>
