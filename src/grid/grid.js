@@ -6,17 +6,17 @@ class Grid extends React.Component {
   constructor() {
     //initial state for cols and rows. aka width and height
     // //width
-    let cols = [];
+    // let cols = [];
     // // //height
-    let rows = [];
+    // let rows = [];
     // // //initalGrid
-    let initialGrid = [];
+    // let initialGrid =  [];
     super();
     //the state
     this.state = {
-      width: cols,
-      height: rows,
-      display: initialGrid,
+      cols: "",
+      rows: "",
+      // display: initialGrid,
     };
     //binding the onChange from the inputs
     this.columnChange = this.columnChange.bind(this);
@@ -29,17 +29,17 @@ class Grid extends React.Component {
   }
   //handleSubmits
   columnChange(e) {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     e.preventDefault();
     this.setState({
-      width: e.target.value,
+      cols: e.target.value,
     });
   }
   rowChange(e) {
     console.log(e.target.value);
     e.preventDefault();
     this.setState({
-      height: e.target.value,
+      rows: e.target.value,
     });
   }
   gridSubmit(e) {
@@ -88,8 +88,9 @@ class Grid extends React.Component {
               className='input'
               name='width'
               type='number'
-              value={this.state.width}
+              value={this.state.cols}
               onChange={this.columnChange}
+              // onChange={(e) => this.setState({ cols: e.target.value })}
               placeholder='Columns'
             />
           </label>
@@ -99,12 +100,12 @@ class Grid extends React.Component {
               className='input'
               name='height'
               type='number'
-              value={this.state.height}
+              value={this.state.rows}
               onChange={this.rowChange}
               placeholder='Rows'
             />
             <label className='input-label'>
-              <input type='submit' value='Submit' />
+              <input type='submit' value='submit' />
             </label>
           </label>
         </form>
