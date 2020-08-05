@@ -6,14 +6,14 @@ class Grid extends React.Component {
   constructor() {
     //initial state for cols and rows. aka width and height
     // //width
-    // let cols = [];
+    let cols = [];
     // //height
-    // let rows = [];
+    let rows = [];
     super();
     //the state
     this.state = {
-      width: [],
-      height: [],
+      width: cols,
+      height: rows,
     };
     //binding the onChange from the inputs
     this.columnChange = this.columnChange.bind(this);
@@ -35,7 +35,7 @@ class Grid extends React.Component {
     });
   }
   handlesubmit(e) {
-    console.log("handlesubmit", this.state.value);
+    this.setState(this.state.value);
     e.preventDefault();
   }
   render() {
