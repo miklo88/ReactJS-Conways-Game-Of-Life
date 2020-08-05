@@ -27,17 +27,22 @@ class Grid extends React.Component {
     //the grid needs to be set to state then compared to the new state incoming.
     // since i have my columns and rows, those can be stored to help create my grid.
   }
+  //handleSubmits
   columnChange(e) {
+    console.log(e.target.value);
+    e.preventDefault();
     this.setState({
       width: e.target.value,
     });
   }
   rowChange(e) {
+    console.log(e.target.value);
+    e.preventDefault();
     this.setState({
       height: e.target.value,
     });
   }
-  gridsubmit(e) {
+  gridSubmit(e) {
     this.setState(this.state.value);
     e.preventDefault();
   }
@@ -47,8 +52,8 @@ class Grid extends React.Component {
     //   this.setState({ display: "initalGrid" });
     // }, 5000);
     // cols and rows i want to create for this grid. to give it width and height
-    let cols = 5; // reading the length of these for da loop
-    let rows = 5; // reading the length of these for da loop
+    let cols; // reading the length of these for da loop
+    let rows; // reading the length of these for da loop
     //creating a 2d array grid to display on reactjs.
     // i want to pass a width and height aka columns and rows to this grid
     function createGrid(cols, rows) {
@@ -71,13 +76,18 @@ class Grid extends React.Component {
     return (
       <div className='grid-component'>
         {/* container for inputs and input title */}
-        <form className='input-container' gridsubmit={this.handleSubmit}>
+        <form
+          className='input-container'
+          value='Submit'
+          onSubmit={this.gridSubmit}
+        >
           {/* inputs to adjust grid size */}
           <label className='input-label'>
             Columns:
             <input
               className='input'
-              type='text'
+              name='width'
+              type='number'
               value={this.state.width}
               onChange={this.columnChange}
               placeholder='Columns'
@@ -87,7 +97,8 @@ class Grid extends React.Component {
             Rows:
             <input
               className='input'
-              type='text'
+              name='height'
+              type='number'
               value={this.state.height}
               onChange={this.rowChange}
               placeholder='Rows'
@@ -98,7 +109,17 @@ class Grid extends React.Component {
           </label>
         </form>
         <div className='grid-container'>
-          <div className='grid'>{createGrid(cols, rows)}</div>
+          <div
+            className='grid'
+            //bust out a grid aqui? props?
+            // style={{
+            //   width: "50px",
+            //   height: "50px",
+            //   backgroundColor: "lightgray",
+            // }}
+          >
+            {createGrid(cols, rows)}
+          </div>
         </div>
         <div className='button-container'>
           {/* going to have to have these manipulate the state and the array. */}
