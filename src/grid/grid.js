@@ -65,7 +65,7 @@ class Grid extends React.Component {
         initialGrid[i] = [];
         //cols.length and it goes bananas for some reason
         for (let j = 0; j < rows; j++) {
-          initialGrid[i][j] = [];
+          initialGrid[i][j] = 0;
           // console.log("this j rows", j);
         }
       }
@@ -73,7 +73,7 @@ class Grid extends React.Component {
     }
     createGrid(this.state.cols, this.state.rows);
     console.log("create grid", createGrid(this.state.cols, this.state.rows));
-
+    // let grid = createGrid(this.state.cols, this.state.rows);
     return (
       <div className='grid-component'>
         {/* container for inputs and input title */}
@@ -122,7 +122,8 @@ class Grid extends React.Component {
             //   backgroundColor: "lightgray",
             // }}
           >
-            {/* {createGrid(cols, rows)} */}
+            {/* {this.state.grid} */}
+            {createGrid(this.state.cols, this.state.rows)}
           </div>
         </div>
         <div className='button-container'>
