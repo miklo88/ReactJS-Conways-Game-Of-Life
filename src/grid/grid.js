@@ -6,9 +6,13 @@ class Grid extends React.Component {
   // getting state ready because I will need it.
   constructor() {
     //initial state for cols and rows. aka width and height
+    // let cols = 5;
+    // let rows = 5;
     super();
     //the state
     this.state = {
+      // cols: cols,
+      // rows: rows,
       cols: "",
       rows: "",
       //grid time
@@ -42,7 +46,7 @@ class Grid extends React.Component {
     e.preventDefault();
     this.setState(this.state.value);
     console.log("submit form button", this.state);
-    //clearning out the form input fields after submit.
+    //clearning out the state form input fields after submit.
     this.setState({
       cols: "",
       rows: "",
@@ -54,20 +58,16 @@ class Grid extends React.Component {
     //   this.setState({ display: "initalGrid" });
     // }, 5000);
     // cols and rows i want to create for this grid. to give it width and height
-    // let cols; // reading the length of these for da loop
-    // let rows; // reading the length of these for da loop
     //creating a 2d array grid to display on reactjs.
     // i want to pass a width and height aka columns and rows to this grid
     function createGrid(cols, rows) {
       //array i want to push info to.
       let initialGrid = [];
-      //cols.length and it goes bananas for some reason
       for (let i = 0; i < cols; i++) {
         initialGrid[i] = [];
-        //cols.length and it goes bananas for some reason
         for (let j = 0; j < rows; j++) {
-          initialGrid[i][j] = <Block />;
-          // console.log("this j rows", j);
+          // initialGrid[i][j] = 0;
+          initialGrid[i][j] = <Block key={toString()} />;
         }
       }
       return initialGrid;
@@ -116,6 +116,7 @@ class Grid extends React.Component {
         <div className='grid-container'>
           <div
             className='grid'
+
             //bust out a grid aqui? props?
             // style={{
             //   width: "50px",
@@ -141,6 +142,7 @@ class Grid extends React.Component {
           </button>
           <button className='btn stop'>Stop</button>
           <button className='btn clear'>Clear</button>
+          <button className='btn seed'>Seed</button>
           <button className='btn increment'>Increment</button>
         </div>
         {/* how many generations have occured. */}

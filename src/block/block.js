@@ -1,5 +1,6 @@
 import React from "react";
 import "./block.scss";
+
 class Block extends React.Component {
   constructor(props) {
     super(props);

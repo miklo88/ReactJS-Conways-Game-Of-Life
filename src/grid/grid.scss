@@ -20,13 +20,15 @@
     padding: 20px;
 
     .grid {
-      display: block;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       color: lightcoral;
       border: 0.5px solid black;
       width: 400px;
       height: 400px;
       background-color: #f3f3f3;
-      margin: 20px;
+      // margin: 20px;
       margin: 0 auto;
     }
   }
