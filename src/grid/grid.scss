@@ -20,13 +20,8 @@
     padding: 20px;
 
     .grid {
-      display: grid;
-      grid-template-columns: repeat(1fr);
-      grid-template-rows: repeat(1fr);
-      grid-gap: 5px;
-      grid-column: 1 / span 5;
-      grid-column: 1 / span 5;
-      color: black;
+      display: block;
+      color: lightcoral;
       border: 0.5px solid black;
       width: 400px;
       height: 400px;

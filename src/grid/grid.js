@@ -1,4 +1,5 @@
 import React from "react";
+import Block from "../block/block";
 import "./grid.scss";
 
 class Grid extends React.Component {
@@ -65,7 +66,7 @@ class Grid extends React.Component {
         initialGrid[i] = [];
         //cols.length and it goes bananas for some reason
         for (let j = 0; j < rows; j++) {
-          initialGrid[i][j] = 0;
+          initialGrid[i][j] = <Block />;
           // console.log("this j rows", j);
         }
       }
