@@ -73,7 +73,7 @@ class Grid extends React.Component {
     }
     createGrid(this.state.cols, this.state.rows);
     console.log("create grid", createGrid(this.state.cols, this.state.rows));
-    // let grid = createGrid(this.state.cols, this.state.rows);
+
     return (
       <div className='grid-component'>
         {/* container for inputs and input title */}
@@ -131,7 +131,9 @@ class Grid extends React.Component {
           {/* going to invoke the function here to create a grid. */}
           <button
             className='btn start'
+            //value to state
             value={this.state.grid}
+            //mock onClick with event handler function to start game.
             onClick={(e) => this.startGame(e)}
           >
             Start
