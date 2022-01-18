@@ -8,7 +8,7 @@ class Nav extends React.Component {
       <div className='nav-component'>
         <h1 className='title'>Conways Game Of Life</h1>
         <div className='link-container'>
-          <Link className='link home' to='/'>
+          <Link className='link home' to='/home'>
             Home
           </Link>
           <Link className='link about' to='/about'>
