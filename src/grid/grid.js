@@ -39,26 +39,19 @@ class Grid extends React.Component {
   }
 
   testGrid(e) {
+    //form submit func
     let cols = parseInt(this.state.cols);
     let rows = parseInt(this.state.rows);
     console.log(`cols int: ${cols}`);
     console.log(`rows int: ${rows}`);
-
-    let num;
-    num++;
-    num.toString();
-    let numKey = num;
-    this.state.grid.push(<Block cellValue={true} key={numKey} />);
+    console.log(`form submitted.`);
     e.preventDefault();
     return this.state.grid;
   }
 
   render() {
-    // console.log("rows, cols submitted", this.state.cols, this.state.rows);
-    //invoke a function to create the grid.
-    // let createdBlock;
-
-    let colContainer = [];
+    let num = 0;
+    let colContainer = this.state.grid;
     let cols = 0;
     cols = parseInt(this.state.cols);
     let rows = 0;
@@ -66,24 +59,16 @@ class Grid extends React.Component {
     console.log(typeof this.state.rows);
 
     for (var c = 0; c < cols; c++) {
-      // colContainer;
-      console.log("C: ", cols);
       colContainer[c] = [];
-      console.log("colContainer: ", colContainer);
       for (var r = 0; r < rows; r++) {
-        console.log("R: ", r);
-        // colContainer.push(r);
-        // colContainer[c][r] = Math.floor(Math.random() * 2);
-        colContainer[c][r] = <Block cellValue={true} cell={true} />;
+        num++;
+        num.toString();
+        let numKey = num;
+        colContainer[c][r] = <Block cell={true} text={"hola"} key={numKey} />;
       }
     }
-    // return colContainer;
-
-    // displayGrid(3, 3);
-    // console.log();
-    console.log("Grid: ", this.state.grid);
-
-    // store grid in an element here, in that element you loop through the data to create the grid elements.(blocks)
+    console.log("Grid-state: ", this.state.grid);
+    // console.log("Grid-render: ", colContainer);
     return (
       <div className='grid-component'>
         {/* container for inputs and input title */}
@@ -120,12 +105,15 @@ class Grid extends React.Component {
             </label>
           </label>
         </form>
-        {}
-        <div className='grid-container'>
-          <div className='grid' value={this.state.grid}></div>
-          {/* {displayGrid()} */}
-          {colContainer}
+        {/* grid creation/iteration */}
+        <div className='grid'>
+          {this.state.grid.map((item, i) => {
+            console.log("testItem", item);
+            console.log("test", i);
+            return item;
+          })}
         </div>
+        {/* <div className='grid'>{colContainer}</div> */}
         <div className='button-container'>
           <button
             className='btn start'

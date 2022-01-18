@@ -5,28 +5,17 @@ class Block extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cellValue: false,
       key: 0,
-      // key: 0,
+      text: "",
     };
   }
   render() {
     // console.log("from block component", this.props);
-
     // if (this.props.cell) {
     if (this.props.cell === true) {
-      // this.state.key++;
-      return (
-        <div className='cell-container'>
-          <div className='block-alive'></div>
-        </div>
-      );
+      return <div className='block-alive'></div>;
     } else {
-      return (
-        <div className='cell-container'>
-          <div className='block-dead'></div>
-        </div>
-      );
+      return <div className='block-dead'></div>;
     }
   }
 }
