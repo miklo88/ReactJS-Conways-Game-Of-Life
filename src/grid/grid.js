@@ -40,11 +40,13 @@ class Grid extends React.Component {
 
   testGrid(e) {
     //form submit func
+    console.log(`start of form submission /////`);
     let cols = parseInt(this.state.cols);
     let rows = parseInt(this.state.rows);
     console.log(`cols int: ${cols}`);
     console.log(`rows int: ${rows}`);
-    console.log(`form submitted.`);
+    console.log(`current grid: ${this.state.grid}`);
+    console.log(`end of form submission. /////`);
     e.preventDefault();
     return this.state.grid;
   }
@@ -64,7 +66,7 @@ class Grid extends React.Component {
         num++;
         num.toString();
         let numKey = num;
-        colContainer[c][r] = <Block cell={true} text={"hola"} key={numKey} />;
+        colContainer[c][r] = <Block text={"hola"} key={numKey} />;
       }
     }
     console.log("Grid-state: ", this.state.grid);
@@ -94,25 +96,24 @@ class Grid extends React.Component {
               placeholder='Rows'
             />
             <label className='input-label'>
-              <button
-                className='btn start'
-                type='submit'
-                value='submit'
-                // onClick={stateToInt}
-              >
+              <button className='btn start' type='submit' value='submit'>
                 Submit
               </button>
             </label>
           </label>
         </form>
         {/* grid creation/iteration */}
-        <div className='grid'>
+        <table className='grid'>
           {this.state.grid.map((item, i) => {
-            console.log("testItem", item);
-            console.log("test", i);
+            console.log("List Items: ", item);
+            console.log("Item: ", i);
+            // item[0];
+            item.map((insideItem, j) => {
+              console.log("inside item.key: ", insideItem.key);
+            });
             return item;
           })}
-        </div>
+        </table>
         {/* <div className='grid'>{colContainer}</div> */}
         <div className='button-container'>
           <button

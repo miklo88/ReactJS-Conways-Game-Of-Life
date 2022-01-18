@@ -5,7 +5,8 @@ class Block extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      key: 0,
+      dead: 0,
+      alive: 1,
       text: "",
     };
   }

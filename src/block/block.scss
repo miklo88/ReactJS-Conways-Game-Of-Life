@@ -1,6 +1,8 @@
 .block-alive {
   // justify-content: center;
   // align-items: center;
+  display: flex;
+  flex-direction: column;
   width: 20px;
   height: 20px;
   border: 1px solid lightcoral;
@@ -9,6 +11,8 @@
 .block-dead {
   // justify-content: center;
   // align-items: center;
+  display: flex;
+  flex-direction: column;
   width: 20px;
   height: 20px;
   border: 1px solid lightcoral;
