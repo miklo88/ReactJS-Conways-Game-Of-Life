@@ -15,6 +15,7 @@ class Grid extends React.Component {
     this.columnChange = this.columnChange.bind(this);
     this.rowChange = this.rowChange.bind(this);
     this.testGrid = this.testGrid.bind(this);
+    // this.testIteration = this.testIteration.bind(this);
   }
 
   componentDidMount() {
@@ -51,14 +52,28 @@ class Grid extends React.Component {
     return this.state.grid;
   }
 
+  // testIteration(e) {
+  //   {
+  //     this.state.grid.map((item, i) => {
+  //       console.log("Item: ", i); //header
+  //       console.table("List Items: ", item); //item in header
+  //       // item[0];
+  //       item.map((insideItem, j) => {
+  //         console.log("inside item.key: ", insideItem.key);
+  //       });
+  //       return item;
+  //     });
+  //   }
+  // }
+
   render() {
     let num = 0;
-    let colContainer = this.state.grid;
     let cols = 0;
-    cols = parseInt(this.state.cols);
     let rows = 0;
+    let colContainer = this.state.grid;
+
+    cols = parseInt(this.state.cols);
     rows = parseInt(this.state.rows);
-    console.log(typeof this.state.rows);
 
     for (var c = 0; c < cols; c++) {
       colContainer[c] = [];
@@ -70,6 +85,7 @@ class Grid extends React.Component {
       }
     }
     console.log("Grid-state: ", this.state.grid);
+    console.log("grid length: ", this.state.grid.length);
     // console.log("Grid-render: ", colContainer);
     return (
       <div className='grid-component'>
@@ -77,44 +93,47 @@ class Grid extends React.Component {
         <form className='input-container' onSubmit={(e) => this.testGrid(e)}>
           {/* inputs to adjust grid size */}
           <label className='input-label'>
-            Columns:
+            Rows:
             <input
               className='input'
               name='width'
               type='number'
               onChange={(e) => this.columnChange(e)}
-              placeholder='Columns'
+              placeholder='Rows'
             />
           </label>
           <label className='input-label'>
-            Rows:
+            Columns:
             <input
               className='input'
               name='height'
               type='number'
               onChange={(e) => this.rowChange(e)}
-              placeholder='Rows'
+              placeholder='Columns'
             />
             <label className='input-label'>
-              <button className='btn start' type='submit' value='submit'>
+              <button
+                className='btn start'
+                type='submit'
+                value='submit'
+                // onClick={(e) => this.testIteration(e)}
+              >
                 Submit
               </button>
             </label>
           </label>
         </form>
-        {/* grid creation/iteration */}
+
         <table className='grid'>
-          {this.state.grid.map((item, i) => {
-            console.log("List Items: ", item);
-            console.log("Item: ", i);
-            // item[0];
-            item.map((insideItem, j) => {
-              console.log("inside item.key: ", insideItem.key);
-            });
-            return item;
-          })}
+          {this.state.grid.map((row, index) => (
+            <tr key={row[0]}>
+              {row.map((cellId) => (
+                <th key={cellId}>{cellId}</th>
+              ))}
+            </tr>
+          ))}
         </table>
-        {/* <div className='grid'>{colContainer}</div> */}
+
         <div className='button-container'>
           <button
             className='btn start'
@@ -137,3 +156,20 @@ class Grid extends React.Component {
   }
 }
 export default Grid;
+
+{
+  /* <table className='grid'>
+{this.state.grid.map((row, index) => {
+  // {colContainer.map((item, i) => {
+  console.log("Item: ", i); //header
+  console.log("List Items: ", item); //item in header
+  // item[0];
+  item.map((insideItem, j) => {
+    console.log("insideItem.key: ", insideItem.key);
+    // return insideItem.key.toString();
+  });
+  return item;
+})}
+{/* {this.state.grid}; */
+}
+// </table> */}
