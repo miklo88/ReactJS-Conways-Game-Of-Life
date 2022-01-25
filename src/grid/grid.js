@@ -4,24 +4,26 @@ import "./grid.scss";
 
 class Grid extends React.Component {
   // getting state ready because I will need it.
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       cols: "",
       rows: "",
       grid: [],
+      key: 0,
     };
+    this.myRef = React.createRef();
+
     //binding the onChange from the inputs
     this.columnChange = this.columnChange.bind(this);
     this.rowChange = this.rowChange.bind(this);
-    this.testGrid = this.testGrid.bind(this);
-    // this.testIteration = this.testIteration.bind(this);
+    this.grid = this.submitGrid.bind(this);
+    // this.testIteration = this.testIteration.bind(this); //cell testing
   }
 
   componentDidMount() {
     console.log("mounted");
   }
-
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log("updated");
   }
@@ -39,7 +41,7 @@ class Grid extends React.Component {
     });
   }
 
-  testGrid(e) {
+  submitGrid(e) {
     //form submit func
     console.log(`start of form submission /////`);
     let cols = parseInt(this.state.cols);
@@ -53,24 +55,36 @@ class Grid extends React.Component {
   }
 
   // testIteration(e) {
-  //   {
-  //     this.state.grid.map((item, i) => {
-  //       console.log("Item: ", i); //header
-  //       console.table("List Items: ", item); //item in header
-  //       // item[0];
-  //       item.map((insideItem, j) => {
-  //         console.log("inside item.key: ", insideItem.key);
-  //       });
-  //       return item;
-  //     });
+  //   console.log("BEAM ME UP WILL ROBINSON: testIteration");
+  //   // this.myRef.current.focus();
+  //   console.log("Current Value: ", this.myRef.current);
+  //   console.log("Values value: ", this.myRef.current.state.status);
+  //   if ((this.myRef.current.state.status = 1)) {
+  //     this.myRef.current.state.status = 1;
+  //     this.myRef.current.state.text = "new value muahaha";
+  //     console.log("If status 1: ", this.myRef.current.state.status);
+  //     e.preventDefault();
+  //   } else {
+  //     console.log("If status 0: ", this.myRef.current.state.status);
+  //     // this.myRef.current.state.status = 1;
+  //     e.preventDefault();
   //   }
+  //   // this.myRef.current.state.status = 1;
+
+  //   console.log("Post Current status: ", this.myRef.current.state.status);
+  //   console.log("Post Current Value: ", this.myRef.current);
+  //   console.log("Post Current Value Text: ", this.myRef.current.state.text);
+  //   // this.myRef.current.props.state = true;
+
+  //   // e.preventDefault();
   // }
 
   render() {
-    let num = 0;
     let cols = 0;
     let rows = 0;
     let colContainer = this.state.grid;
+
+    let numKeyId = this.state.key;
 
     cols = parseInt(this.state.cols);
     rows = parseInt(this.state.rows);
@@ -78,20 +92,33 @@ class Grid extends React.Component {
     for (var c = 0; c < cols; c++) {
       colContainer[c] = [];
       for (var r = 0; r < rows; r++) {
-        num++;
-        num.toString();
-        let numKey = num;
-        colContainer[c][r] = <Block text={"hola"} key={numKey} />;
+        numKeyId++;
+        // numKeyId.toString();
+        colContainer[c][r] = (
+          <Block text={""} key={numKeyId} ref={this.myRef} />
+        );
       }
     }
+
     console.log("Grid-state: ", this.state.grid);
     console.log("grid length: ", this.state.grid.length);
-    // console.log("Grid-render: ", colContainer);
+    console.log("grid key: ", this.state.key);
+    console.log("Grid-render: ", colContainer);
     return (
       <div className='grid-component'>
         {/* container for inputs and input title */}
-        <form className='input-container' onSubmit={(e) => this.testGrid(e)}>
+        <form className='input-container' onSubmit={(e) => this.submitGrid(e)}>
           {/* inputs to adjust grid size */}
+          <label className='input-label'>
+            Columns:
+            <input
+              className='input'
+              name='height'
+              type='number'
+              onChange={(e) => this.rowChange(e)}
+              placeholder='Columns'
+            />
+          </label>
           <label className='input-label'>
             Rows:
             <input
@@ -103,35 +130,27 @@ class Grid extends React.Component {
             />
           </label>
           <label className='input-label'>
-            Columns:
-            <input
-              className='input'
-              name='height'
-              type='number'
-              onChange={(e) => this.rowChange(e)}
-              placeholder='Columns'
-            />
-            <label className='input-label'>
-              <button
-                className='btn start'
-                type='submit'
-                value='submit'
-                // onClick={(e) => this.testIteration(e)}
-              >
-                Submit
-              </button>
-            </label>
+            <button className='btn start' type='submit' value='submit'>
+              Submit
+            </button>
           </label>
         </form>
 
         <table className='grid'>
-          {this.state.grid.map((row, index) => (
-            <tr key={row[0]}>
-              {row.map((cellId) => (
-                <th key={cellId}>{cellId}</th>
-              ))}
-            </tr>
-          ))}
+          <tbody className='grid-body'>
+            {this.state.grid.map((row, index) => (
+              <tr key={row[0]["key"]}>
+                {console.log("index: ", index)}
+                {row.map((cellId) => (
+                  <th id={cellId} key={index}>
+                    {cellId}
+                    {console.log("cellId.key: ", cellId.key)}
+                    {console.log("cellId.key: ", cellId.status)}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </tbody>
         </table>
 
         <div className='button-container'>
@@ -156,20 +175,3 @@ class Grid extends React.Component {
   }
 }
 export default Grid;
-
-{
-  /* <table className='grid'>
-{this.state.grid.map((row, index) => {
-  // {colContainer.map((item, i) => {
-  console.log("Item: ", i); //header
-  console.log("List Items: ", item); //item in header
-  // item[0];
-  item.map((insideItem, j) => {
-    console.log("insideItem.key: ", insideItem.key);
-    // return insideItem.key.toString();
-  });
-  return item;
-})}
-{/* {this.state.grid}; */
-}
-// </table> */}
