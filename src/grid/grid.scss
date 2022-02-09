@@ -17,8 +17,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    // grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
-    // grid-template-rows: repeat(auto-fit, minmax(1px, 1fr));
     grid-gap: 1px;
     width: 100%;
     height: auto;
@@ -26,7 +24,7 @@
     background-color: white;
     .grid-body {
       grid-column: 1 / span 3;
-      grid-row: 2 / span 2;
+      grid-row: 1 / span 4;
       justify-self: center;
     }
   }

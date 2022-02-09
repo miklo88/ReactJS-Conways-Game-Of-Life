@@ -15,8 +15,8 @@
 */
 
 // global variables
-let cols = 5;
-let rows = 5;
+let cols = 2;
+let rows = 2;
 let grid = initArray(cols, rows);
 console.log("Initial Table Below");
 console.table(grid);
@@ -43,7 +43,7 @@ function initArray(cols, rows) {
   }
   return carlsGrid;
 }
-initArray(cols, rows);
+// initArray(cols, rows);
 
 // neighbors
 function myNeighbors(grid, x, y) {
@@ -70,15 +70,21 @@ function myNeighbors(grid, x, y) {
       ];
       // for all elements found you must add to a new neighbors list.
       // console.log("neighbors", neighbors);
-      // console.log(neighbors[(0, 0)]);
-      // console.log(neighbors[(1, 1)]);
+      // console.log("0,0", neighbors[(0, 0)]);
+      // console.log("0,1", neighbors[(0, 1)]);
+      // console.log("1,0", neighbors[(1, 0)]);
+      // console.log("1,1", neighbors[(1, 1)]);
       // console.log("coord", neighbors[(2, 2)]);
       // console.log("coord", neighbors[(2, 4)]);
       // console.log(grid[2][4]);
       // let newNeighbors = [];
       // console.log(neighbors[[0][0]]);
-      console.log("grid[i][j]", grid[i][j]);
+      // console.log("grid[i][j]", grid[i][j]);
       // console.log("grid[2][2]", grid[2][2]);
+      console.log("grid[0][0]", grid[0][0]);
+      console.log("grid[0][1]", grid[0][1]);
+      console.log("grid[1][0]", grid[1][0]);
+      console.log("grid[1][1]", grid[1][1]);
       return neighbors;
     }
   }
@@ -86,16 +92,17 @@ function myNeighbors(grid, x, y) {
 // console.log(neighbors(0, 0));
 // console.log("grid", grid);
 // myNeighbors(grid, 5, 5);
-console.log("myNeighbors func", myNeighbors(grid, 5, 5));
+console.log("myNeighbors func", myNeighbors(grid, 2, 2));
 //toggling grid cells with either 1 or 0
 // console.log("0", grid[0][0]);
 // console.log("0", grid[0][1]);
 // console.log("0", grid[0][2]);
 // console.log("0", grid[0][3]);
 // console.log("0", grid[0][4]);
-// console.log("2", grid[2][0]);
-// console.log("2", grid[2][1]);
-console.log("grid[2][2]", grid[2][2]);
+// console.log("1", grid[1][1]);
+// console.log("grid", grid[2][0]);
+// console.log("grid", grid[2][1]);
+// console.log("grid[2][2]", grid[2][2]);
 // console.log("2", grid[2][3]);
 // console.log("2", grid[2][4]);
 // console.log("4", grid[4][0]);
@@ -138,9 +145,9 @@ function deadAlive(grid) {
   }
   return (newArray = grid);
 }
-deadAlive(grid);
-console.log("deadAlive func", deadAlive(grid));
-console.table(grid);
+// deadAlive(grid);
+// console.log("deadAlive func", deadAlive(grid));
+// console.table(grid);
 
 // console.log("row 0", grid[0][0]);
 // console.log("row 0", grid[0][1]);
